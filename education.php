@@ -30,20 +30,20 @@
                     <img src="img/logo.png" alt="SCHELEDER">
                     </a>
                     <ul class="navbar-nav">
-                        <li class="nav-item">
+                    <li class="nav-item">
                         <a href="welcome.php" class="nav-link">Perfil</a>
                         </li>
+                        <li class="nav-item active">
+                        <a href="education.php" class="nav-link">Formação</a>
+                        </li>
                         <li class="nav-item">
-                        <a href="contact.php" class="nav-link">Contato</a>
+                        <a href="carreer.php" class="nav-link">Experiência</a>
                         </li>
                         <li class="nav-item">
                         <a href="projects.php" class="nav-link">Projetos</a>
                         </li>
                         <li class="nav-item">
-                        <a href="education.php" class="nav-link">Formação</a>
-                        </li>
-                        <li class="nav-item">
-                        <a href="carreer.php" class="nav-link">Experiência</a>
+                        <a href="contact.php" class="nav-link">Contato</a>
                         </li>
             
                     </ul>
@@ -53,7 +53,7 @@
              <main>
              <div id="container-fluid">
             <div class="row">
-                <div class="col-4">imagem</div>
+                <div class="col-2">imagem</div>
 
                 <div class="col-8">
                     <h1>Formação</h1> 
@@ -72,7 +72,7 @@
                 
             </main>
          <footer>
-         <a href="/contact"><p>Contato &copy; 2022</p></a>   
+         <a href="contact.php"><p>João Scheleder Neto &copy; 2022</p></a>   
          </footer>
          <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

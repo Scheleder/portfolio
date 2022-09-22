@@ -59,6 +59,8 @@ h5{
   font-style: italic;
 }
 
+
+
   /*NAVBAR*/
 
 #navbar{
@@ -79,6 +81,14 @@ h5{
 
 #navbar a:hover{
     color:rgb(150, 0, 0);
+  }
+
+
+  #navbar .active a{
+    color:rgb(150, 0, 0);
+    text-decoration: none;
+    font-weight: bold;
+    
   }
 
   /*FRAME*/

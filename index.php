@@ -34,29 +34,37 @@
                         <a href="welcome.php" class="nav-link">Perfil</a>
                         </li>
                         <li class="nav-item">
-                        <a href="contact.php" class="nav-link">Contato</a>
-                        </li>
-                        <li class="nav-item">
-                        <a href="projects.php" class="nav-link">Projetos</a>
-                        </li>
-                        <li class="nav-item">
                         <a href="education.php" class="nav-link">Formação</a>
                         </li>
                         <li class="nav-item">
                         <a href="carreer.php" class="nav-link">Experiência</a>
                         </li>
-            
+                        <li class="nav-item">
+                        <a href="projects.php" class="nav-link">Projetos</a>
+                        </li>
+                        <li class="nav-item">
+                        <a href="contact.php" class="nav-link">Contato</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
         </header>
              <main>
-             
-                    
+             <div id="container-fluid">
+            <div class="row">
+                <div class="col-2">imagem</div>
+
+                <div class="col-8">
+                <h1>Bem vindo ao meu Portfolio Profissional!</h1>
+             <h5>Navegue pelo site para saber mais.</h5>
+                </div>
+            </div>
+        </div>
+                                 
                 
             </main>
          <footer>
-         <a href="/contact"><p>Contato &copy; 2022</p></a>   
+         <a href="contact.php"><p>João Scheleder Neto &copy; 2022</p></a>   
          </footer>
          <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
