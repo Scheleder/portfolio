@@ -19,29 +19,31 @@
                 document.getElementById("conteudo").setAttribute('src',link);
             }
         </script>
+
     </head>
     <body background="img/lake.jpg">
+    
         <header>
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class= "collapse navbar-collapse" id="navbar">
-                <a onclick="url('welcome.php')">
+                <a href="index.php">
                     <img src="img/logo.png" alt="SCHELEDER">
                     </a>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                        <a onclick="url('welcome.php')" class="nav-link">Perfil</a>
+                        <a href="welcome.php" class="nav-link">Perfil</a>
                         </li>
                         <li class="nav-item">
-                        <a onclick="url('contact.php')" class="nav-link">Contato</a>
+                        <a href="contact.php" class="nav-link">Contato</a>
                         </li>
                         <li class="nav-item">
-                        <a onclick="url('projects.php')" class="nav-link">Projetos</a>
+                        <a href="projects.php" class="nav-link">Projetos</a>
                         </li>
                         <li class="nav-item">
-                        <a onclick="url('education.php')" class="nav-link">Formação</a>
+                        <a href="education.php" class="nav-link">Formação</a>
                         </li>
                         <li class="nav-item">
-                        <a onclick="url('carreer.php')" class="nav-link">Experiência</a>
+                        <a href="carreer.php" class="nav-link">Experiência</a>
                         </li>
             
                     </ul>
@@ -49,12 +51,7 @@
             </nav>
         </header>
              <main>
-        
-                    
-                   
-                        <iframe id="conteudo">
-                        
-                        </iframe>
+             
                     
                 
             </main>
