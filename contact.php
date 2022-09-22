@@ -1,5 +1,5 @@
 <div id="container">
 
-<h5>Contato</h5> 
+<h1>Contato</h1> 
 
 </div>

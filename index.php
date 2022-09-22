@@ -29,7 +29,7 @@
                     </a>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                        <a onclick="url('welcome.php')" class="nav-link">Página inicial</a>
+                        <a onclick="url('welcome.php')" class="nav-link">Perfil</a>
                         </li>
                         <li class="nav-item">
                         <a onclick="url('contact.php')" class="nav-link">Contato</a>
@@ -49,14 +49,14 @@
             </nav>
         </header>
              <main>
-                <div class="container-fluid">
+        
                     
-                    <div class="row">
+                   
                         <iframe id="conteudo">
                         
                         </iframe>
-                    </div>
-                </div>
+                    
+                
             </main>
          <footer>
          <a href="/contact"><p>Contato &copy; 2022</p></a>   
