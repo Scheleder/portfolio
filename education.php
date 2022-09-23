@@ -5,7 +5,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Scheleder</title>
-        
 	    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />     
         <!--Fonte do Google-->
         <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
@@ -14,43 +13,39 @@
         <!--CSS da Aplicação-->
         <link rel="stylesheet" href="css/styles.css" />
         <script src="js/scripts.js"></script>
-        <script type="text/javascript">
-            function url(link){
-                document.getElementById("conteudo").setAttribute('src',link);
-            }
-        </script>
-
     </head>
-    <body background="img/lake.jpg">
-    
+    <body background="img/wall.jpg">
         <header>
             <nav class="navbar navbar-expand-lg navbar-light">
-                <div class= "collapse navbar-collapse" id="navbar">
-                <a href="index.php">
-                    <img src="img/logo.png" alt="SCHELEDER">
-                    </a>
-                    <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="welcome.php" class="nav-link">Perfil</a>
-                        </li>
-                        <li class="nav-item active">
-                        <a href="education.php" class="nav-link">Formação</a>
-                        </li>
-                        <li class="nav-item">
-                        <a href="carreer.php" class="nav-link">Experiência</a>
-                        </li>
-                        <li class="nav-item">
-                        <a href="projects.php" class="nav-link">Projetos</a>
-                        </li>
-                        <li class="nav-item">
-                        <a href="contact.php" class="nav-link">Contato</a>
-                        </li>
-            
-                    </ul>
+                <div class="container-fluid" id="navbar">
+                    <a href="index.php"><img src="img/logo.png" alt="SCHELEDER"></a>
+                    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse" id="menu" style="">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                            <a href="welcome.php" class="nav-link">Perfil</a>
+                            </li>
+                            <li class="nav-item active">
+                            <a href="education.php" class="nav-link">Formação</a>
+                            </li>
+                            <li class="nav-item">
+                            <a href="carreer.php" class="nav-link">Experiência</a>
+                            </li>
+                            <li class="nav-item">
+                            <a href="projects.php" class="nav-link">Projetos</a>
+                            </li>
+                            <li class="nav-item">
+                            <a href="contact.php" class="nav-link">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </nav>
         </header>
-             <main>
+        <main>
+   
              <div id="container-fluid">
             <div class="row">
                 <div class="col-2">imagem</div>
@@ -74,7 +69,6 @@
          <footer>
          <a href="contact.php"><p>João Scheleder Neto &copy; 2022</p></a>   
          </footer>
-         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>  
     </body>
 </html>
