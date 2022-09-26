@@ -47,14 +47,66 @@
         </header>
         <main>
         <div id="container-fluid">
-            
                     <h1>Contato</h1> 
-                
+                    <ul id="list">
+                            <li>
+                            <a href="mailto:me@scheleder.com" class="nav-link">
+                            <ion-icon name="at-outline"></ion-icon>  
+                            me@scheleder.com</a>
+                            </li>
+                            <li>
+                            <a href="tel:+5541991248571" class="nav-link">
+                            <ion-icon name="logo-whatsapp"></ion-icon>    
+                            +55 (41) 991 248 571</a>
+                            </li>
+                            <li>
+                            <a href="https://www.linkedin.com/in/scheleder/" class="nav-link">
+                            <ion-icon name="logo-linkedin"></ion-icon>  
+                            Linkedin</a>
+                            </li>
+                            <li>
+                            <a href="https://play.google.com/store/apps/developer?id=Jo%C3%A3o+Scheleder+Neto" class="nav-link">
+                            <ion-icon name="logo-google-playstore"></ion-icon>  
+                            Google Playstore</a>
+                            </li>
+                            <li>
+                            <a href="https://github.com/Scheleder" class="nav-link">
+                            <ion-icon name="logo-github"></ion-icon>  
+                            Github</a>
+                            </li>
+                            <li>
+                            <a href="https://www.facebook.com/scheleder" class="nav-link">
+                            <ion-icon name="logo-facebook"></ion-icon>  
+                            Facebook</a>
+                            </li>
+                            <li>
+                            <a href="https://www.instagram.com/joaoschelederneto/" class="nav-link">
+                            <ion-icon name="logo-instagram"></ion-icon>  
+                            Instagram</a>
+                            </li>
+                            <li>
+                            <a href="https://www.youtube.com/user/joaoschelederneto/videos" class="nav-link">
+                            <ion-icon name="logo-youtube"></ion-icon>  
+                            Youtube</a>
+                            </li>
+                            <li>
+                            <a href="https://twitter.com/SchelederNeto" class="nav-link">
+                            <ion-icon name="logo-twitter"></ion-icon>   
+                            Twitter</a>
+                            </li>
+                            <li>
+                            <a href="https://goo.gl/maps/Bw8ops1XhkjBpfh46" class="nav-link">
+                            <ion-icon name="home"></ion-icon>   
+                            Colombo/PR</a>
+                            </li>
+                            
+                        </ul>
         </div>
         </main>
          <footer>
             <a href="contact.php"><p>João Scheleder Neto &copy; 2022</p></a>   
         </footer>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script> 
     </body>
 </html>
