@@ -13,14 +13,14 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">         
         <!--CSS da Aplicação-->
         <link rel="stylesheet" href="css/styles.css" />
-        <script src="js/scripts.js"></script>
-        
+        <script src="js/scripts.js"></script>        
     </head>
     <body background="img/wall.jpg">
         <header>
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container-fluid" id="navbar">
                     <a href="index.php"><img src="img/logo.png" alt="SCHELEDER"></a>
+                    <div id="foto"><img src="img/perfil.png" alt="foto"></div>
                     <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     </button>
@@ -48,17 +48,13 @@
         </header>
              <main>
              <div id="container-fluid">
-            <div class="row">
-                <div class="col-2">imagem</div>
-
-                <div class="col-8">
                 <h1>Bem vindo ao meu Portfolio Profissional!</h1>
-             <h5>Navegue pelo site para saber mais.</h5>
-                </div>
-            </div>
-        </div>
-                                 
-                
+                <h4>Meu nome é <spam style="color:#A11">João Scheleder Neto</spam>, 
+                busco oportunidades na área de Análise de Sistemas para as funções de Programador, Desenvolvedor,
+                    Analista, Controlador de Qualidade, Projetista Eletrônico ou em demais áreas em que 
+                    meus conhecimentos se enquadrem.</h4>
+                <h4>Acesse o menu ao lado para saber mais.</h4>     
+            </div>              
             </main>
          <footer>
          <a href="contact.php"><p>João Scheleder Neto &copy; 2022</p></a>   

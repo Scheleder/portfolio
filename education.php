@@ -50,14 +50,14 @@
              <div id="container-fluid">
            
                     <h1>Formação</h1> 
-                    <h3>UNIVERSIDADE ESTÁCIO DE SÁ (2014 – 2017)</h3>
-                    <h4>Análise e Desenvolvimento de Sistemas</h4>
+                    <h4><img src="img/estacio.png" alt="logo">UNIVERSIDADE ESTÁCIO DE SÁ (2014 – 2017)</h4>
+                    <h5>Análise e Desenvolvimento de Sistemas</h5>
 
-                    <h3>SENAI-SP (2011 – 2013)</h3>
-                    <h4>Técnico em Mecatrônica e Automação Industrial</h4>
+                    <h4><img src="img/senai.png" alt="logo">SENAI-SP (2011 – 2013)</h4>
+                    <h5>Técnico em Mecatrônica e Automação Industrial</h5>
 
-                    <h3>INSTITUTO MONITOR (2005 - 2009)</h3>
-                    <h4>Técnico em Eletrônica</h4>
+                    <h4><img src="img/monitor.png" alt="logo">INSTITUTO MONITOR (2005 - 2009)</h4>
+                    <h5>Técnico em Eletrônica</h5>
                 
         </div>
                     

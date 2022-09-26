@@ -98,8 +98,7 @@
                             <a href="https://goo.gl/maps/Bw8ops1XhkjBpfh46" class="nav-link">
                             <ion-icon name="home"></ion-icon>   
                             Colombo/PR</a>
-                            </li>
-                            
+                            </li>                     
                         </ul>
         </div>
         </main>

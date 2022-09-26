@@ -47,33 +47,25 @@
         </header>
              <main>
              <div id="container-fluid">
-                
-               
-                
-                    <h2>João Scheleder Neto</h2> 
-                    <h3>Analista de Sistemas</h3>    
+                    <h1>João Scheleder Neto</h1>    
                     <h4>
-                    PCD visão monocular, Divorciado, 3 filhos, 50 anos, carteira de habilitação B, 
-                    não fumante, pontual, bom conhecimento em informática, resiliente, proativo, 
-                    intraempreendedor, experiência com trabalho em equipe, disponibilidade para viagens, 
-                    negociação com clientes e fornecedores, vivência com normas técnicas e de 
-                    qualidade. 
-                    </br>
-                    Busco oportunidades na área de Análise de Sistemas para as funções de Programador, 
-                    Analista, Controlador de Qualidade, Projetista Eletrônico ou em demais áreas em que 
-                    meus conhecimentos se enquadrem e possam efetivamente contribuir.
-                    </br>
-                    Conhecimento em linguagens de programação Java, PHP, C, Assembly, Delphi, HTML e CSS.
-                    Experiência na utilização de framework Bootstrap, Laravel, Github, SQL e aplicações 
-                    mobile.
-                    </br>
-                    Desenvolvimento de aplicações para sistemas mobile e desktop, conexão a banco de 
-                    dados, atuação em laboratório de manutenção, atendimentos em diversos contratos 
-                    de manutenção, homologação de componentes e fornecedores, venda técnica de produtos 
-                    e serviços, desenvolvimento de produtos, projetos eletrônicos diversos...
+                    Nasci em Curitiba e hoje tenho 50 anos, resido na cidade de Colombo 
+                    (região metropolitana de Curitiba), sou solteiro, tenho 3 lindos 
+                    filhos (13, 17 e 30 anos), carteira de habilitação B,
+                    não fumante, disponivel para viagens, trabalho on-site e/ou home-office.
+                    </p>
+                    Posso trabalhar como PCD, pois possuo visão monocular (CID H54-4), 
+                    devido a uma toxoplasmose.
+                    </p>
+                    Tenho boa vivência com normas técnicas e de qualidade, melhoria de processos, 
+                    negociação com clientes e fornecedores, gestão de contratos de manutenção, 
+                    desenvolvimento de produtos, projetos eletrônicos e trabalho em equipe.
+                    </p>
+                    Tenho conhecimento em algumas linguagens de programação 
+                    (Java, PHP, C, C++, Asssembly, Delphi, HTML, CSS...),
+                    frameworks como Laravel e Bootstrap, banco de dados SQL, plataforma Github e 
+                    desenvolvimento Android para aplicações mobile.                    
                     </h4> 
-                
-               
                 </div>     
             </main>
          <footer>
