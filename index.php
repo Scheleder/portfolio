@@ -14,12 +14,7 @@
         <!--CSS da Aplicação-->
         <link rel="stylesheet" href="css/styles.css" />
         <script src="js/scripts.js"></script>
-        <script type="text/javascript">
-            function url(link){
-                document.getElementById("conteudo").setAttribute('src',link);
-            }
-        </script>
-
+        
     </head>
     <body background="img/wall.jpg">
         <header>

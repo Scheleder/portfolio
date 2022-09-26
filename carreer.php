@@ -25,7 +25,8 @@
         <header>
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container-fluid" id="navbar">
-                    <a href="index.php"><img src="img/logo.png" alt="SCHELEDER"></a>
+                    <a href="index.php"><img src="img/logo.png" alt="logo"></a>
+                    <div id="foto"><img src="img/carreer.png" alt="foto"></div>
                     <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     </button>
@@ -54,10 +55,7 @@
              <main>
              
              <div id="container-fluid">
-            <div class="row">
-                <div class="col-2">imagem</div>
-
-                <div class="col-8">
+        
             
                 <h1>Experiência Profissional</h1> 
 
@@ -77,8 +75,7 @@
 
                 <h3>MILAN EQUIPAMENTOS CIENTÍFICOS (jan/1988 – out/1992)</h3>
 
-                </div>
-            </div>
+               
         </div>  
                 
             </main>

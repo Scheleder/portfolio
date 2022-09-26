@@ -5,7 +5,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Scheleder</title>
-        
 	    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />     
         <!--Fonte do Google-->
         <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
@@ -14,25 +13,20 @@
         <!--CSS da Aplicação-->
         <link rel="stylesheet" href="css/styles.css" />
         <script src="js/scripts.js"></script>
-        <script type="text/javascript">
-            function url(link){
-                document.getElementById("conteudo").setAttribute('src',link);
-            }
-        </script>
-
     </head>
     <body background="img/wall.jpg">
         <header>
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container-fluid" id="navbar">
-                    <a href="index.php"><img src="img/logo.png" alt="SCHELEDER"></a>
+                    <a href="index.php"><img src="img/logo.png" alt="logo"></a>
+                    <div id="foto"><img src="img/perfil.png" alt="foto"></div>                    
                     <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="navbar-collapse collapse" id="menu" style="">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                            <a href="welcome.php active" class="nav-link">Perfil</a>
+                            <li class="nav-item active">
+                            <a href="welcome.php" class="nav-link">Perfil</a>
                             </li>
                             <li class="nav-item">
                             <a href="education.php" class="nav-link">Formação</a>
@@ -53,10 +47,8 @@
         </header>
              <main>
              <div id="container-fluid">
-                <div class="row">
-                <div class="col-2">imagem</div>
-
-                <div class="col-8">
+                
+               
                 
                     <h2>João Scheleder Neto</h2> 
                     <h3>Analista de Sistemas</h3>    
@@ -80,8 +72,8 @@
                     de manutenção, homologação de componentes e fornecedores, venda técnica de produtos 
                     e serviços, desenvolvimento de produtos, projetos eletrônicos diversos...
                     </h4> 
-                </div>
-                </div>
+                
+               
                 </div>     
             </main>
          <footer>
