@@ -47,18 +47,23 @@
             </nav>
         </header>
              <main>
-             <div id="container-fluid">
+                <div id="container-fluid">
                 <h1>Bem vindo ao meu Portfolio Profissional!</h1>
                 <h4>Meu nome é <spam style="color:#A11">João Scheleder Neto</spam>, 
                 busco oportunidades na área de Análise de Sistemas para as funções de Programador, Desenvolvedor,
                     Analista, Controlador de Qualidade, Projetista Eletrônico ou em demais áreas em que 
                     meus conhecimentos se enquadrem.</h4>
-                <h4>Acesse o menu ao lado para saber mais.</h4>     
-            </div>              
+                <h4>Acesse o menu ao lado para saber mais.</h4>
+                <h4>Ou então, faça o download do meu Currículo:</h4>  
+                <a href="docs/cv_scheleder.pdf" class="nav-link">
+                            <ion-icon size="large" name="newspaper-outline"></ion-icon>   
+                            cv_scheleder.pdf</a>
+                </div>              
             </main>
          <footer>
          <a href="contact.php"><p>João Scheleder Neto &copy; 2022</p></a>   
          </footer>
+         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script> 
     </body>
 </html>
