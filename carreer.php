@@ -53,10 +53,10 @@
 
                     <h4> <img src="img/berry.png" alt="logo">BERRY GLOBAL (abr/2018 – jun/2022)</h4>
                     <h5><ion-icon name="id-card-outline"></ion-icon>
-                    Técnico em Eletrônica e Tecnologia da Informação.
+                    Analista de TI Industrial e Técnico de Automação.
                     </h5>
                     <h5><ion-icon name="construct"></ion-icon>
-                    Manutenção e programação de computadores industriais, desenvolvimento de aplicações diversas e 
+                    Desenvolvimento de aplicações diversas, manutenção e programação de computadores industriais e 
                     manutenção de sistemas de automação industrial.
                     </h5>
 

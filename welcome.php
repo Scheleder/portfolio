@@ -62,8 +62,9 @@
                     desenvolvimento de produtos, projetos eletrônicos e trabalho em equipe.
                     </p>
                     Tenho conhecimento em algumas linguagens de programação 
-                    (Java, PHP, C, C++, Asssembly, Delphi, HTML, CSS...),
-                    frameworks como Laravel e Bootstrap, banco de dados SQL, plataforma Github e 
+                    (Java, JavaSript, PHP, C, C++, Asssembly, Delphi, HTML, CSS...),
+                    frameworks como Laravel, Spring, Node, React e Bootstrap, 
+                    banco de dados SQL, Postgres, MongoDBe MariaDB, plataforma Github e 
                     desenvolvimento Android para aplicações mobile.                    
                     </h4> 
                 </div>     
