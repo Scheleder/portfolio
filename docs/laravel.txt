@@ -1,0 +1,541 @@
+LARAVEL FRAMEWORK
+
+DOCUMENTAÇÃO => https://laravel.com
+
+INSTALAR PHP => php.net
+
+INSTALAR PHP VIA XAMPP => apachefriends.org
+
+INSTALAR NODE & NPM => nodejs.org
+
+INSTALAR COMPOSER => getcomposer.org
+
+CRIAR PROJETO
+composer create-project laravel/laravel nome_do_projeto
+
+GLOBALMENTE
+composer global require laravel/installer
+laravel new example-app
+
+INICIAR APLICAÇÃO
+cd nome_do_projeto
+php artisan serve
+http://localhost:8000
+
+########### MODELS
+php artisan make:model Product
+COM MIGRATIONS CONTROLLERS FORMS
+php artisan make:model Product --migration --controller --resource --requests
+ou php artisan make:model Product --all
+visualizar:
+php artisan model:show Product
+campos editaveis:
+protected $fillable = ['name'];
+campos com arrays
+protected $guarded = [];
+
+########### RELACIONAMENTOS BÁSICOS
+
++++++ 1:1
+class Schedule extends Model{
+ public function procediment(){
+	return $this->belongsTo(Procediment::class, 'procediment_id', 'id');}}
+class Procediment extends Model{
+ public function schedule(){
+    return $this->hasOne(Schedule::class, 'procediment_id', 'id');}}
+
++++++ 1:N
+class Classe extends Model{
+	public function course(){
+        return $this->belongsTo(Course::class, 'course_id', 'id');}}
+class Course extends Model{
+    public function classes(){
+        return $this->hasMany(Classe::class, 'course_id', 'id');}}
+
++++++ N:N
+class Classe extends Model{
+    public function students(){
+        return $this->belongsToMany(User::class, 'class_student', 'classe_id', 'user_id');}}
+class User extends Authenticatable{
+    public function classesAsStudent(){
+        return $this->belongsToMany(Classe::class, 'class_student', 'user_id', 'classe_id');}}
+
+
+########## AUTENTICAÇÃO
+compose require laravel/ui
+php artisan ui vue --auth
+npm install
+npm run dev
+
+########## CONTROLLERS
+php artisan make:controller ProductController
+php artisan make:controller ProductController --model=Product --resource //CRUD
+php artisan make:controller ProductController --model=Product --resource --requests //CRUD + FORMS
+
+######### CONFIGURAR DATABASE
+.env
+DB_CONNECTION=sqlite 
+DB_CONNECTION=mysql 
+DB_HOST=127.0.0.1 
+DB_PORT=3306 
+DB_DATABASE=laravel 
+DB_USERNAME=root 
+DB_PASSWORD= 
+
+########## CRIAR DATABASE E TABELAS
+php artisan make:migration create_product_table
+php artisan migrate
+php artisan migrate:status
+php artisan migrate:rollback //desfaz a ultima migração
+php artisan migrate:reset //APAGA TUDO
+php artisan migrate:fresh //Roda todas migrations e apaga os dados do DB
+
+PARA ADICIONAR CAMPOS SEM PERDER DADOS
+cria migration adicionando o campo
+php artisan make:migration add_category_to_table_products
+e roda: php artisan migrate
+
+######### POPULAR TABELAS
+php artisan make:seeder UserSeeder
+php artisan tinker
+User::factory()->count(200)->create()
+
+######### ROTAS
+web.php
+
+Route::get('/greeting', function () {return 'Hello World';});
+Route::get('/user', [UserController::class, 'index']);
+Route::get('/users', function (Request $request) { // });
+Route::get('/user/profile', [UserProfileController::class, 'show'])->name('profile');
+$url = route('profile');
+return redirect()->route('profile');
+return to_route('profile');
+Route::redirect('/here', '/there');
+Route::view('/welcome', 'welcome');
+Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
+Route::get('/profile', function ())->middleware('auth');
+
++++++ GRUPO DE ROTAS
+Route::controller(OrderController::class)->group(function () {
+    Route::get('/orders/{id}', 'show');
+    Route::post('/orders', 'store');});
+
+Auth::routes(); //a partir daqui somente com autrenticação
+Route::get('/home', [HomeController::class, 'home']);
+Route::get('/users', [HomeController::class, 'showAllUsers']);
+
++++++ ROTAS DE SUBDOMINIO
+Route::domain('{account}.example.com')->group(function () {
+    Route::get('user/{id}', function ($account, $id) {  // });});
+
++++++ ACESSAR ROTA ATUAL
+$route = Route::current(); // Illuminate\Routing\Route
+$name = Route::currentRouteName(); // string
+$action = Route::currentRouteAction(); // string
+
++++++ ROUTE CACHE E CLEAR CACHE
+php artisan route:cache
+php artisan route:clear
+
++++++ VER LISTA DE ROTAS
+php artisan route:list
+
+########## FORM METHOD SPOOFING FOR PUT, PATCH, or DELETE 
+<form action="/example" method="POST">
+@method('PUT') ou  <input type="hidden" name="_method" value="PUT">
+@csrf ou <input type="hidden" name="_token" value="{{ csrf_token() }}">
+</form>
+
+########## REQUESTS
+$request->host();
+$request->httpHost();
+$request->schemeAndHttpHost();
+$ipAddress = $request->ip();
+$input = $request->all();
+$input = $request->collect();
+$name = $request->input('name');
+$name = $request->input('products.0.name');
+$name = $request->query('name');
+$name = $request->input('user.name'); //JSON
+$name = $request->string('name')->trim(); //toString
+$name = $request->name;
+$request->mergeIfMissing(['votes' => 0]);
+$username = $request->old('username');
+$path = $request->photo->path();
+$extension = $request->photo->extension();
+
+######### SALVANDO ARQUIVOS
+if($request->hasFile('image') && $request->file('image')->isValid()) {
+		$requestImage = $request->image;
+		$extension = $requestImage->extension();
+		$imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+		$requestImage->move(public_path('img/users'), $imageName);
+		$data['image'] = $imageName;
+	}
+	
+######### RESPONSES
+return redirect('home/dashboard');
+return redirect()->route('login');
+return redirect()->route('profile', ['id' => 1]);
+return redirect()->away('https://www.google.com');
+return back()->withInput();
+return response()->download($pathToFile);
+return response($content)
+		->header('Content-Type', $type)
+		->header('X-Header-One', 'Header Value')
+		->header('X-Header-Two', 'Header Value');
+			
+return response('Hello World')
+		->cookie('name', 'value', $minutes);
+		
+######### COMPARTILHAR VARIAVEL COM TODAS AS VIEWS
+EM App\Providers\AppServiceProvide
+public function boot(){
+        View::share('key', 'value');
+    }
+	
+######### COLOCAR VIEWS EM CACHE ou LIMPAR CACHE
+php artisan view:cache
+php artisan view:clear
+
+######### REFERENCIAR ARQUIVOS ESTATICOS NA PASTA PUBLIC
+<script src="{{ asset('/js/scripts.js') }}"></script>
+
+########## DIRETIVAS NO BLADE
+{{-- This comment will not be present in the rendered HTML --}}
++++++ PHP
+@php
+    $counter = 1;
+@endphp
++++++ IF
+@if (count($records) === 1)
+    I have one record!
+@elseif (count($records) > 1)
+    I have multiple records!
+@else
+    I don't have any records!
+@endif
++++++ ISSET
+@isset($records)
+    // $records is defined and is not null...
+@endisset
++++++ AUTH
+@auth
+    // The user is authenticated...
+@endauth
++++++ GUEST
+@guest
+    // The user is not authenticated...
+@endguest
++++++ SWITCH
+@switch($i)
+    @case(1)
+        First case...
+        @break
+ 
+    @case(2)
+        Second case...
+        @break
+ 
+    @default
+        Default case...
+@endswitch
++++++ FOR
+@for ($i = 0; $i < 10; $i++)
+    The current value is {{ $i }}
+@endfor
++++++ FORELSE 
+@forelse ($users as $user)
+    <li>{{ $user->name }}</li>
+@empty
+    <p>No users</p>
+@endforelse
++++++ WHILE
+@while (true)
+    <p>I'm looping forever.</p>
+@endwhile
++++++ FOREACH
+@foreach ($users as $user)
+    <p>This is user {{ $user->id }}</p>
+@endforeach
++++++ FOREACH BREAK
+@foreach ($users as $user)
+    @if ($user->type == 1)
+        @continue
+    @endif
+    <li>{{ $user->name }}</li>
+    @if ($user->number == 5)
+        @break
+    @endif
+@endforeach
++++++ FOREACH->LOOP
+@foreach ($users as $user)
+    @if ($loop->first)
+        This is the first iteration.
+    @endif
+    @if ($loop->last)
+        This is the last iteration.
+    @endif
+    <p>This is user {{ $user->id }}</p>
+@endforeach
++++++ FOREACH->LOOP->ATTRIBS
+@foreach ($users as $user)
+    @foreach ($user->posts as $post)
+        @if ($loop->parent->first)
+            This is the first iteration of the parent loop.
+        @endif
+    @endforeach
+@endforeach
+
+########## ATRIBUTOS DO LOOP
+$loop->index		The index of the current loop iteration (starts at 0).
+$loop->iteration	The current loop iteration (starts at 1).
+$loop->remaining	The iterations remaining in the loop.
+$loop->count		The total number of items in the array being iterated.
+$loop->first		Whether this is the first iteration through the loop.
+$loop->last			Whether this is the last iteration through the loop.
+$loop->even			Whether this is an even iteration through the loop.
+$loop->odd			Whether this is an odd iteration through the loop.
+$loop->depth		The nesting level of the current loop.
+$loop->parent		When in a nested loop, the parent's loop variable.
+
+########## ATRIBUTOS BLADE
+<input type="checkbox" @checked(old('active', $user->active)) />
+<select name="version">
+    @foreach ($product->versions as $version)
+        <option value="{{ $version }}" @selected(old('version') == $version)>
+            {{ $version }}
+        </option>
+    @endforeach
+</select>
+<button type="submit" @disabled($errors->isNotEmpty())>Submit</button>
+<input type="email"
+        name="email"
+        value="email@laravel.com"
+        @readonly($user->isNotAdmin()) />
+<input type="text"
+        name="title"
+        value="title"
+        @required($user->isAdmin()) />
+
+########## DATABASE QUERYS
+$users=User::all();
+$user = User::findOrFail($id);
+$users=User::all()->sortBy('name');
+$users=User::where($type,1)->get()->sortBy('name');
+$newCoordinator = User::where('teacher', '=' ,1)->where('id','!=', $id)->first();
+$procediments = Procediment::where(['type', 'like', '%'.$search.'%'])->get()->sortBy('type');
+$classe->save();
+$register->delete();
+User::findOrFail($request->id)->update($data);
+Procediment::findOrFail($id)->delete();
+$student->classesAsStudent()->attach($classe->id);
+$student->classesAsStudent()->detach($classe->id);
+
+########## VIEWS
++++++ MODELO LAYOUT
+<title>@yield('title')</title>
+@yield('content')
++++++ MODELO VIEW
+@extends('layouts.main')
+@section('title', 'Editando: ' . $user->name)
+@section('content')
+@endsection
++++++ EXIBIR MENSAGEM AO CARREGAR A VIEW
+@if(session('msg'))
+<p class="msg">{{session('msg')}}</p>
+@endif
++++++ SUBVIEWS
+<div>@include('shared.errors')</div>
+@includeFirst(['custom.admin', 'admin'], ['status' => 'complete'])
+
+######### INICIALIZAR VARIAVEL DE ARRAY NO JAVASCRIPT
+<script>var list = @json($list);</script> //TESTADO
+<script>var app = <?php echo json_encode($array); ?>;</script>
+ou nas versões mais novas
+<script>var app = {{ Js::from($array) }};</script>
+
+######### FORMATAR MASCARA CPF
+<script type="text/javascript">
+function formatar_mascara(src, mascara) {
+ var campo = src.value.length;
+ var saida = mascara.substring(0,1);
+ var texto = mascara.substring(campo);
+ if(texto.substring(0,1) != saida) {
+ src.value += texto.substring(0,1);
+ }
+}
+</script>
+onkeypress="formatar_mascara(this,'###.###.###-##')" 
+
+######### FORMATAR MASCARA MOEDA
+<script type="text/javascript">
+// parâmetros da função moeda (pelo que entendi)
+// a = objeto do input // e = separador milésimo
+// r = separador decimal // t = evento
+
+function moeda(a, e, r, t) {
+   let n = "",
+      h = j = 0,
+      u = tamanho2 = 0,
+      l = ajd2 = "",
+      o = window.Event ? t.which : t.keyCode;
+   if (13 == o || 8 == o)
+      return !0;
+   if (n = String.fromCharCode(o),
+      -1 == "0123456789".indexOf(n))
+      return !1;
+   for (u = a.value.length,
+      h = 0; h < u && ("0" == a.value.charAt(h) || a.value.charAt(h) == r); h++);
+   for (l = ""; h < u; h++) - 1 != "0123456789".indexOf(a.value.charAt(h)) && (l += a.value.charAt(h));
+   if (l += n, 0 == (u = l.length) && (a.value = ""), 1 == u && (a.value = "0" + r + "0" + l), 2 == u && (a.value = "0" + r + l), u > 2) {
+      for (ajd2 = "",
+         j = 0,
+         h = u - 3; h >= 0; h--)
+         3 == j && (ajd2 += e,
+            j = 0),
+         ajd2 += l.charAt(h),
+         j++;
+      for (a.value = "",
+         tamanho2 = ajd2.length,
+         h = tamanho2 - 1; h >= 0; h--)
+         a.value += ajd2.charAt(h);
+      a.value += r + l.substr(u - 2, u)
+   }
+   return !1
+}
+</script>
+onkeypress="return(moeda(this,'.',',',event))"
+
+######### INCLUIR MODAL DE CONFIRMAÇÃO
+@include('layouts.confirmation_modal', 
+	['headerText' => 'Excluir Pessoa', 
+	'bodyText' => 'Confirma a exclusão?', 
+	'confirmButtonText' => 'Excluir', 
+	'verb' => 'DELETE'])
+<a data-href="/users/remove/{{$user->id}}" 
+	data-bs-toggle="modal" 
+	data-bs-target="#confirmation-modal" 
+	class="btn btn-danger" 
+	style="width: 45%">Excluir</a>
+<script>
+	$('#confirmation-modal').on('show.bs.modal', function(e) {
+		link = $(e.relatedTarget).data('href')
+		// change link of button to corresponding target
+		$(this).find('#deleteForm').attr('action', link)
+		//console.log(hrlinkef);
+		//$(this).find('#test').val(link)
+	})
+</script>
+
+######### INCLUIR AUTOCOMPLETE
+<div class="col form-group" autocomplete="off">
+	<form action="/users" method="GET">
+		<div class="autocomplete" style="width:300px;">
+			<input style="margin-left: 10px; margin-top:4px; background-color: #EEE" type="text" id="myInput" name="search" class="form-control" placeholder="Procurar pelo nome...">
+		</div></form></div>
+<script>
+    var list = @json($list);  //PASSAR A VARIAVEL $LIST VIA CONTROLLER
+    autocomplete(document.getElementById("myInput"), list);
+</script>
+
+<script>
+function autocomplete(inp, arr) {
+    /*the autocomplete function takes two arguments,
+    the text field element and an array of possible autocompleted values:*/
+    var currentFocus;
+    /*execute a function when someone writes in the text field:*/
+    inp.addEventListener("input", function(e) {
+        var a, b, i, val = this.value;
+        /*close any already open lists of autocompleted values*/
+        closeAllLists();
+        if (!val) { return false;}
+        currentFocus = -1;
+        /*create a DIV element that will contain the items (values):*/
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+        /*append the DIV element as a child of the autocomplete container:*/
+        this.parentNode.appendChild(a);
+        /*for each item in the array...*/
+        for (i = 0; i < arr.length; i++) {
+            /*check if the item starts with the same letters as the text field value:*/
+            if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+            /*create a DIV element for each matching element:*/
+            b = document.createElement("DIV");
+            /*make the matching letters bold:*/
+            b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+            b.innerHTML += arr[i].substr(val.length);
+            /*insert a input field that will hold the current array item's value:*/
+            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+            /*execute a function when someone clicks on the item value (DIV element):*/
+            b.addEventListener("click", function(e) {
+                /*insert the value for the autocomplete text field:*/
+                inp.value = this.getElementsByTagName("input")[0].value;
+                /*close the list of autocompleted values,
+                (or any other open lists of autocompleted values:*/   
+                closeAllLists();
+                inp.closest("form").submit();                 
+            });
+            a.appendChild(b);
+            }
+        }
+    });
+    /*execute a function presses a key on the keyboard:*/
+    inp.addEventListener("keydown", function(e) {
+        var x = document.getElementById(this.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
+        if (e.keyCode == 40) {
+            /*If the arrow DOWN key is pressed,
+            increase the currentFocus variable:*/
+            currentFocus++;
+            /*and and make the current item more visible:*/
+            addActive(x);
+        } else if (e.keyCode == 38) { //up
+            /*If the arrow UP key is pressed,
+            decrease the currentFocus variable:*/
+            currentFocus--;
+            /*and and make the current item more visible:*/
+            addActive(x);
+        } else if (e.keyCode == 13) {
+            /*If the ENTER key is pressed, prevent the form from being submitted,*/
+            //e.preventDefault();
+            if (currentFocus > -1) {
+            /*and simulate a click on the "active" item:*/
+            if (x) x[currentFocus].click();
+            }
+            $(this).closest("form").submit(); 
+        }
+    });
+    function addActive(x) {
+        /*a function to classify an item as "active":*/
+        if (!x) return false;
+        /*start by removing the "active" class on all items:*/
+        removeActive(x);
+        if (currentFocus >= x.length) currentFocus = 0;
+        if (currentFocus < 0) currentFocus = (x.length - 1);
+        /*add class "autocomplete-active":*/
+        x[currentFocus].classList.add("autocomplete-active");
+    }
+    function removeActive(x) {
+        /*a function to remove the "active" class from all autocomplete items:*/
+        for (var i = 0; i < x.length; i++) {
+        x[i].classList.remove("autocomplete-active");
+        }
+    }
+    function closeAllLists(elmnt) {
+        /*close all autocomplete lists in the document,
+        except the one passed as an argument:*/
+        var x = document.getElementsByClassName("autocomplete-items");
+        for (var i = 0; i < x.length; i++) {
+        if (elmnt != x[i] && elmnt != inp) {
+            x[i].parentNode.removeChild(x[i]);
+        }
+        }
+    }
+    /*execute a function when someone clicks in the document:*/
+    document.addEventListener("click", function (e) {
+        closeAllLists(e.target);
+    });
+}
+</script>
