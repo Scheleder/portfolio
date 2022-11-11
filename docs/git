@@ -1,0 +1,62 @@
+######### criando um novo repositório
+crie uma nova pasta, abra-a e execute o comando
+git init
+
+######### obtenha um repositório
+git clone /caminho/para/o/repositório
+
+######### fluxo de trabalho
+Working Directory -> Pasta de trabalho
+INDEX -> temporário
+HEAD -> repositório local
+REMOTO -> repósitorio remoto
+
+######### adicionar ao INDEX
+git add <arquivo>
+git add *
+
+######### adicionar ao HEAD
+git commit -m "comentários das alterações"
+
+######### adicionar ao REMOTO
+git push origin master ->master=branch desejada
+
+######### adicionar repositório remoto
+git remote add origin <servidor>
+
+######### adicionar branch (ramificação)
+git checkout -b funcionalidade_x
+
+######### mudar de branch 
+git checkout master
+
+######### excluir branch
+git branch -d funcionalidade_x
+
+######### enviar branch para o repositório REMOTO
+git push origin <funcionalidade_x>
+
+######### atualizar & mesclar
+git pull
+
+######### mesclar branch
+git merge <branch>
+
+######### visualizar alterações
+git diff <branch origem> <branch destino>
+
+######### obter o id do commit
+git log
+
+######### rotular o release
+git tag 1.0.0 1b2e1d63ff ->1b2e1d63ff = id do commit
+
+######### desfazer alterações locais
+git checkout -- <arquivo>
+
+######### desfazer todas as alterações locais
+git fetch origin
+git reset --hard origin/master
+
+######### fazer inclusões interativas
+git add -i

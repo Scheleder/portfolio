@@ -539,3 +539,24 @@ function autocomplete(inp, arr) {
     });
 }
 </script>
+
+########## RODAR NO LOCALHOST VIA XAMPP
++++++ httpd-vhostd.conf
+<VirtualHost *:80>
+	ServerName bra.localhost
+	DocumentRoot "c:/xampp/htdocs/bra/public"	
+</VirtualHost>
++++++ c:\windows\system32\drivers\etc\hosts
+127.0.0.1 bra.localhost
+::1	bra.localhost
++++++ httpd.conf
+Listen 80
+LoadModule alias_module modules/mod_alias.so
+<Directory "C:/xampp/htdocs">
+	Options Indexes FollowSymLinks Includes ExecCGI
+	AllowOverride All
+	Require all granted
+</Directory>
+
+########## DEPLOY HOSTINGER
++ INSTALAR LARAVEL VIA HOSTINGER
