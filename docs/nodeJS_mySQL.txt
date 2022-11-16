@@ -1,0 +1,177 @@
+NODE.JS MODELO API REST
+
+######### INSTALAR
+https://nodejs.org/en/download/
+
+######### INSTALAR DEPENDENCIAS
+npm init -y
+npm install --save sequelize
+npm install --save sequelize-cli
+npm install --save mysql2
+npm install --save dotenv
+
+######### CRIAR ARQUIVO .env
+DB_USERNAME=nodejs
+DB_PASSWORD=nodejs
+DB_DATABASE=nodejs_template
+DB_HOSTNAME=localhost
+DB_DATATYPE=mysql
+DB_URI=mysql://nodejs:nodejs@localhost:3306/nodejs_teste
+APP_HOST=localhost
+APP_PORT=3000
+
+######### CRIAR ARQUIVO .sequelizerc
+const path = require('path');
+
+module.exports = {
+  'config': path.resolve('share', 'config.js'),
+  'models-path': path.resolve('share', 'models'),
+  'seeders-path': path.resolve('share', 'seeders'),
+  'migrations-path': path.resolve('share', 'migrations')
+};
+
+######### CRIAR PASTAS
+npx sequelize-cli init 
+
+######### CRIAR DB
+editar config.js
+require('dotenv').config(); 
+const db_name = process.env.DB_DATABASE;
+const db_user = process.env.DB_USERNAME;
+const db_pass = process.env.DB_PASSWORD;
+const db_host = process.env.DB_HOSTNAME;
+const db_type = process.env.DB_DATATYPE;
+module.exports = {
+  "development": {
+      "username": db_user,
+      "password": db_pass,
+      "database": db_name,
+      "host": db_host,
+      "dialect": db_type
+  },
+  "test": {
+    "username": db_user,
+    "password": db_pass,
+    "database": db_name,
+    "host": db_host,
+    "dialect": db_type
+  },
+  "production": {
+    "username": db_user,
+    "password": db_pass,
+    "database": db_name,
+    "host": db_host,
+    "dialect": db_type
+  }
+};
+e rodar:
+npx sequelize-cli db:create
+
+######### CRIAR MODELS E MIGRATIONS
+npx sequelize-cli model:generate --name User --attributes name:string,email:string,dateBirth:date
+
+######### DEFINIR ASSOCIAÇÕES
+Aluno.associate = function(models) {
+  Aluno.belongsTo(models.Curso);
+}
+
+######### RODAR MIGRATIONS
+npx sequelize-cli db:migrate
+
+######### CRIAR SEEDS
+npx sequelize-cli seed:generate --name demoUser
+
+######### RODAR SEEDS
+editar arquivo e rodar
+npx sequelize-cli db:seed:all
+
+######### CRIAR SERVIDOR
+npm install --save express
+npm install --save body-parser
+npm install --save chalk@4.1.2
+npm install --save moment
+npm install --save nodemon
+criar arquivo server.js
+const bodyParser = require('body-parser');
+const router = require('./routes')
+const express = require('express');
+const app = express();
+const chalk = require("chalk");
+require('dotenv').config(); 
+const host = process.env.APP_HOST;
+const port = process.env.APP_PORT;
+app.use(express.json());
+app.use(router);
+app.listen(port, ()=>{console.log(chalk.blue(`Server running at http://${host}:${port}/`));});
+module.exports = app, router;
+
+######### CRIAR CONEXÃO COM DB
+criar arquivo db.js
+const {Sequelize} = require('sequelize'); 
+const moment = require('moment');
+const chalk = require('chalk');
+console.log(chalk.yellow('###############################################'));
+console.log(chalk.red('  APPLICATION STARTED IN: '+moment().format("DD/MM/YYYY HH:mm:ss")));
+console.log(chalk.yellow('###############################################'));
+require('dotenv').config(); 
+const db_name = process.env.DB_DATABASE;
+const db_user = process.env.DB_USERNAME;
+const db_pass = process.env.DB_PASSWORD;
+const db_host = process.env.DB_HOSTNAME;
+const db_type = process.env.DB_DATATYPE;
+const database = new Sequelize(db_name, db_user, db_pass, {host: db_host,dialect: db_type,query:{raw:true}});  
+  try {database.authenticate();console.log(chalk.blue("mySQL connected successfully!"));} 
+	catch (error) {console.error(chalk.red("Fail on mySQL connection: ", error));}
+    module.exports = database;
+
+######### CRIAR SCRIPT DE START
+"start": "nodemon index.js"
+
+######### CRIAR ROTAS
+routes/index.js
+const express = require('express');
+const alunoRouter = require('./alunoRouter');
+const cursoRouter = require('./cursoRouter');
+const router = express.Router();
+const moment = require('moment');
+const chalk = require('chalk');
+// middleware that is specific to this router
+router.use((req, res, next) => {console.log(chalk.magenta('Requisição -> Hora: '+moment().format("MM/DD/YYYY HH:mm:ss"), " && URL -> "+req.path));
+    next() })
+router.use('/alunos', alunoRouter);
+router.use('/cursos', cursoRouter);
+router.get('/',function(req,res){return res.send("Página Inicial")});
+module.exports = router;
+routes/alunoRouter.js
+const express = require ('express');
+const AlunoController = require('../controllers/AlunoController');
+const router = express.Router();
+router.get('/', AlunoController.index);
+router.get('/:id', AlunoController.show);
+router.post('/', AlunoController.store);
+router.put('/:id', AlunoController.update);
+router.delete('/:id', AlunoController.delete);
+module.exports = router;
+
+######### CRIAR CONTROLLERS
+const Aluno = require("../models/aluno");
+const Curso = require("../models/curso");
+exports.index = async (req,res)=>{
+  const alunos = await Aluno.findAll();
+  return res.json(alunos)}
+exports.show = async(req,res)=>{
+  const aluno = await Aluno.findByPk(req.params.id);
+  return res.json(aluno);}
+exports.store = async(req,res)=>{
+  const aluno = await Aluno.create(req.body);
+  return res.json(aluno)}
+exports.update = async(req,res)=>{
+  await Aluno.update(req.body, {where: {id: req.params.id}});
+  const aluno = await Aluno.findByPk(req.params.id);
+  return res.json(aluno)}
+exports.delete = async(req,res)=>{
+  const aluno = await Aluno.findByPk(req.params.id);
+  await Aluno.destroy({where: {id: req.params.id}});
+  return res.json(aluno)}
+
+
