@@ -71,13 +71,11 @@ npx sequelize-cli db:create
 ######### CRIAR MODELS E MIGRATIONS
 npx sequelize-cli model:generate --name User --attributes name:string,email:string,dateBirth:date
 
-######### DEFINIR ASSOCIAÇÕES NO ARQUIVO index dos models
+######### DEFINIR ASSOCIAÇÕES
 Aluno.associate = function(models) {
   Aluno.belongsTo(models.Curso);
 }
 User.belongsTo(models.Department,{foreignKey: 'department_id', as:'department'});
-db.Item.hasMany(db.Avaliation, {as:'avaliatons'});
-
 
 ######### SINCRONIZAR DB
 db.sequelize.sync({ force: true }).then(() => {
