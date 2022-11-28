@@ -12,6 +12,7 @@
         <link rel="mask-icon" href="/ico/safari-pinned-tab.svg" color="#880000">
         <meta name="msapplication-TileColor" content="#ffc40d">
         <meta name="theme-color" content="#ffffff">
+        <link rel="shortcut icon" href="ico/favicon.ico" type="image/x-icon" /> 
         <!--Fonte do Google-->
         <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
         <!--CSS da Bootstrap-->
