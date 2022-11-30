@@ -3,54 +3,48 @@ PROFILE
 Hi, my name is João Scheleder, I was born in Curitiba and today I am fifty years old, 
 I live in the city of Colombo (metropolitan region of Curitiba), 
 I'm single, I have three beautiful children (thirteen, sixteen and thirty years old), 
-B driving license, non-smoker, avaliable for travels, work on-site and/or home-office, 
+B driving license, non-smoker, avaliable for travels, (work on-site and/or home-office), 
 I can work as a PCD (disable person), as I have monocular vision (CID H54-4), 
 due to toxoplasmosis.
 
 SPELL
-S => ÉS
+S => ÉSS
 C => SÍ
 H => EIX
-E => ÉS
+E => II
 L => ÉL
-E => ÉS
+E => II
 D => DI
-E => ÉS
+E => II
 R => ÁR
-
-CHILDRENS
-She is a zootechnician and works in the field of animal medicine.
-They still don't know what they're going to be.
-I would like them to work in my area, but I believe that only the 
-youngest son is interested.
-
-THATS FINE
-My english is basic. My writing is good and I understand almost everything I read, 
-but I still have to improve my listening and speaking. Sometimes, I get a little 
-bit nervous when I need to talk to native speakers, but I'm working on it.
 
 SKILLS
 I have more than twenty year of experience as Electronic Technician.
 Experienced in industrial automation, instalattion and mainteance of electrical 
 and electronics equipaments, industrial computers, and I have good knowledge of 
 communications networks.
-I also know how to repair a computers very well.
-I always like to be learning things that make me grow professionally.
+(I also know how to repair a computers very well.)
+(I always like to be learning things that make me grow professionally.)
 I'm passionate about what I do.
 I also have experience with technical and quality standards, process improvements, 
 negotiation with costumers and suppliers. 
-Mainteance contracts management, product development, electronic projects, 
-firmware and software development and teamwork.
+(Mainteance contracts management, product development, electronic projects, 
+firmware and software development and teamwork)
 
 FORMATION - BACKGROUND
 I'm a Technician in Electronic, Mechatronics, Industrial Automation and Robotics 
 from the Technical School and have degree in Computer Sciences - Systems Analysis
 from Estácio de Sá University.
 And I have taken dozens others courses in my career.
-Computer courses, programations languages, security courses, etc
+(Computer courses, programations languages, security courses, etc)
 I'm proficient in Microsoft Office.
-I want to take conversation classes for improve my communication with my 
-international team and costuimers.
+
+ENGLISH LEVEL
+My english is basic. My writing is good and I understand almost everything I read, 
+but I still have to improve my listening and speaking. Sometimes, I get a little 
+bit nervous when I need to talk to native speakers, but I'm working on it.
+I want to take conversation classes for improve my communication (with my 
+international team and costumers.)
 
 LAST JOBS
 Im my last job worked at Berry Global, an American company, as Electronics Technician 
@@ -59,14 +53,15 @@ Berry produces non-woven and has dozens production lines in several branches thr
 Latin America.
 At Berry, I learned and specialized in industrial automation, maintaining production lines, 
 performing interventions in PLCs, industrial computers, inverters, sensors, etc. 
-Also I developed applications (mainly in Java language) for desktop and mobile.
+(Also I developed applications (mainly in Java language) for desktop and mobile.)
 
 Before that I worked for six years at Sicpa, a Switzerland Company.
+(Sicpa is the biggest money printing ink manufacturer.)
 My tasks were in the mainteance of the SICOBE Project, a system that controls and tracks 
 the production of beverages (beer, water, soda, etc) throughtout Brazil, counting, 
 identifiyng and printing a datamatrix code on the product (on the lid or under the can).
 I had the opportunity to learn many things, and got through lot of experiences.
-(Programming PLCs, repairing prints (deskjets),configuring sensors and TCP/IP networks).
+(Programming PLCs, repairing prints (like deskjets),configuring sensors and TCP/IP networks).
 
 First of all I worked with energy systems (no-breaks, stabilizers, battery charges, etc) 
 for almost twenty years, and during this period I had my own bussiness for six years.
@@ -75,6 +70,8 @@ for almost twenty years, and during this period I had my own bussiness for six y
 WHY DID YOU LEAVE OR GET FIRED?
 In Berry, the sector I worked in was outsourced to an external company.
 (I wasn't happy, but I understood their side, its a part of bussiness.)
+(At that time, I didn't know the company's intentions,) 
+(and there was the prospect of carrying out new projects.)
 In Sicpa, the project was closed.
 (I heard that there was a case of corruption in the company).
 
@@ -96,16 +93,17 @@ In this company I will be able to work on what I like, I will have the possibili
 learning new things and growing with the team.
 I have heard good things about ISRA company.
 Multinational companies tend to have a more serious management and give more stability 
-to employees. So I believe that this job add to my values.
+to employees. (So I believe that this job add to my values).
 
 PRODUCT
 I already know a little about machine vision.
-When Tavares carried out interventions at Berry Global, I helped him on the tasks,
-Mainly on computer or networks problems.
-I instaled No-breaks in the cabinets of the ISRA systems in all line produtions at Berry.
+When Tavares carried out interventions at Berry Global, I helped him on someone tasks,
+Mainly on the computer or networks problems.
 I was responsible for making backup images for the ISRA systems.
+I installed UPSs in the cabinets of the ISRA systems in all line produtions at Berry.
 I also replaced all Hard Disks with Solid State Disks.
-Aignment of cameras, replacement of peripherals too.
+(mostly things where more than one person was needed)
+(Tasks like allignment of cameras, lens focus, replacement of peripherals too.)
 
 FORCES - STRENGTHS
 I dedicate myself to tasks;
@@ -118,19 +116,13 @@ TEAM PLAYER
 Yes. I like to cooperate with others and always try to share my knowledge.
 For me, its very important in the workplace.
 
-HOBBIES - FREE TIME
-I like to be spend time with my family, watching movies and football, 
-work in my garden and barbecue with friends.
-Used to be a coach in amateur football and I was also a teacher at a children's 
-football school.
-
 WEAKNESS
 I'm little eager, anxious;
-(I used to be, today I'm better.)
-I don't accept delays;
+(I used to be more, today I'm mutch better.)
+(I don't accept delays);
 I dont like in to speak in public.
 Sometimes I prefer to work things out myself;
-(But I have been working on those weaknesses... 8-)
+But I have been working on those weaknesses... 8-)
 
 REACT TO CRITICISM
 I always try to deal constructively. After receive, I would spend a time observing my 
@@ -141,35 +133,73 @@ In my last job I had to deals with a insatisfied production employees, as they w
 internal costumers.
 I always tried to remember that was nothing personal and I need to focus on the 
 technical issues to solve the problem, because that was also mine too.
-Always dealing professionally, seeking information and solutions, because sometimes, 
-the task demands greater skills than I possessed.
+(Always dealing professionally, seeking information and solutions, because sometimes, 
+the task demands greater skills than I possessed).
 I think had ability to learn the necessary and manage the work.
 
 RELATIONSHIP PROBLEMS
-I usually have a good relatioship, I can't remember any problems.
+I usually have a good relationship, I can't remember any problems.
 I don't leave any job because bad relations.
+
+HOBBIES - FREE TIME
+I like to be spend time with my family, watching movies, football and NBA, 
+listen music, work in my garden and cook or barbecue with friends.
+(my speciality is moqueca, its a seafood with vegetables, I like to cook on a wood stove, 
+meat in a wood oven too)
+( I drink with meals, or in especial events like weddings, parties)
+(Used to be a coach in amateur football and I was also a teacher at a children's 
+football school.)
+
+CHILDRENS
+Jessica, the oldest, is a zootechnician and works in the field of animal medicine.
+The boys... They still don't know what they're going to be.
+I would like them to work in my area, but I believe that only the 
+youngest son is interested.
 
 WAGE REQUEST - SORT A SALARIAL
 In my previous job I was earning a little over seven thousands REAIS.
 But I'm willing to negotiate salary and benefits, its flexible.
-It is difficult to talk only about salary because it depends on the benefits offered.
-I had like to hear about the benefits first, if possible.
+(It is difficult to talk only about salary because it depends on the benefits offered.)
+(I had like to hear about the benefits first, if possible.)
 I have already been informed about this.
 I believe I fit into the salary sort and the career plan attracted me.
 
-BRAZILIAN SITUATION
-Im my opinion, the Brazilian government has to take control of the situation and
-work harded to solve our problems. In this moment of difficulty, the Brazilian 
-people need to learn how to save the money to get the through this situation.
+BRAZILIAN ECONOMIC SITUATION IS DANGEROUS
+Im my opinion, the Brazilian government spend too much on unnecessary charges, 
+(has to take control of the situation and work harded to solve our problems.) 
+(In this moment of difficulty,) the Brazilian people need to learn how to save 
+the money to get the through this situation.
 I think that financial education should be a subject in Brazilian schools, 
-so since we would learn how to deal with money.
+(so since we would learn how to deal with money.)
 In fact, Brazil needs a lot of investment in education.
+(I hope this make sense, I messed up in the comments)
 
 WORLD CUP
 I hope Brazil becomes the champions.
-But we depend a lot on Neymar, he needs to play for the team. I think he's very selfish.
+But we depend a lot of Neymar, he needs to play for the team. I think he's very selfish.
 But I like Germany too, because it's the country of my grandparents.
-(Yes, my mother's and father's parents migrated from Germany during the First War.)
+(Yes, my mother's and father's parents migrated from Germany during the War.)
+
+POLITICS
+We have a lot of problems here...
+Politics in Brazil is a delicate topic, as the situation is very polarized.
+I don't support any side, I hope for a less populist third way.
+Brazil needs to invest in education soon.
+
+LIVE OUTSIDE OF BRAZIL
+I think about, mainly because my kids.
+Im encourage them for this.
+(I wish they would grow up in a fairer place.)
+(Here will take decades to improve the situation.)
+
+TRAGEDY
+Its happened near here. The hill collapsed, due to excessive rain.
+Some cars and two trucks were passing on the highway (and were buried).
+A terrible scene, can only pray for the people. 
+
+AMAZONIA
+The forest needs to be preserved, to maintain our biodiversity, I believe that we must exploit it economically.
+Today carbon credits are a reality, it is possible to take advantage of it
 
 TO PROGRAMMING
 This position in this company is different from the position that 
@@ -186,3 +216,18 @@ Is it possible to make a career outside of Brazil?
 INDUSTRY
 Automotive, nonwovens, paper, metal, glassses, automation, etc.
 Inovation, client focused, quality, precision, durability.
+
+JOKES
+Alexa, I'm bored.
+Alexa responds: Whats happen?
+My uncle is dead.
+Alexa: Sorry about that. Would it help you if I told a joke?
+Sure!
+Alexa: Toc toc...
+Who is?
+Alexa: Not your Uncle.
+
+Alexa, Tell me a joke. I'm fired.
+Alexa: OK. Whats the difference in a big pizza and you?
+I don't know.
+Alexa: The pizza feeds one family.
