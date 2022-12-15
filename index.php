@@ -56,12 +56,11 @@
                 <div id="container-fluid">
                 <h1>Bem vindo ao meu Portfolio Profissional!</h1>
                 <h4>Meu nome é <spam style="color:#A11">João Scheleder Neto</spam>, 
-                busco oportunidades na área de Análise de Sistemas para as funções de Programador, Desenvolvedor,
-                    Analista, Controlador de Qualidade, Técnico em Eletrônica, Projetista Eletrônico ou em demais áreas em que 
-                    meus conhecimentos se enquadrem.</h4>
+                atuo na área de Análise de Sistemas como Programador, Desenvolvedor,
+                    Analista, Técnico em Eletrônica ou Projetista Eletrônico.</h4>
                 <h4>Acesse o menu ao lado para saber mais.</h4>
-                <h4>Ou então, faça o download do meu Currículo:</h4>  
-                <a href="docs/cv_scheleder.pdf" class="nav-link">
+                <h4>Ou então, faça o download do meu cartão virtual:</h4>  
+                <a href="docs/scheleder.pdf" class="nav-link">
                             <ion-icon size="large" name="newspaper-outline"></ion-icon>   
                             cv_scheleder.pdf</a>
                 </div>              

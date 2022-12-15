@@ -56,23 +56,15 @@
              <div id="container-fluid">
                     <h1>João Scheleder Neto</h1>    
                     <h4>
-                    Nasci em Curitiba e hoje tenho 50 anos, resido na cidade de Colombo 
-                    (região metropolitana de Curitiba), sou solteiro, tenho 3 lindos 
-                    filhos (13, 17 e 30 anos), carteira de habilitação B,
-                    não fumante, disponivel para viagens, trabalho on-site e/ou home-office.
-                    </p>
-                    Posso trabalhar como PCD, pois possuo visão monocular (CID H54-4), 
-                    devido a uma toxoplasmose.
-                    </p>
                     Tenho boa vivência com normas técnicas e de qualidade, melhoria de processos, 
-                    negociação com clientes e fornecedores, gestão de contratos de manutenção, 
-                    desenvolvimento de produtos, projetos eletrônicos e trabalho em equipe.
+                    negociação com clientes e fornecedores,
+                    desenvolvimento de aplicações, websites, equipamentos e projetos eletrônicos.
                     </p>
                     Tenho conhecimento em algumas linguagens de programação 
                     (Java, JavaSript, PHP, C, Asssembly, Delphi, HTML, CSS...),
                     frameworks como Laravel, Spring, Node, React e Bootstrap, 
-                    banco de dados SQL, Postgres, MongoDBe MariaDB, plataforma Github e 
-                    desenvolvimento Android para aplicações mobile.                    
+                    banco de dados SQL, Postgres, MongoDB e MariaDB, plataforma Github e 
+                    desenvolvimento na plataformas Windows, Linux e Android para aplicações mobile e desktop.                    
                     </h4> 
                 </div>     
             </main>

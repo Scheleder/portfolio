@@ -102,7 +102,7 @@
                     <h5><ion-icon name="construct"></ion-icon>
                     Instalação, manutenção corretiva, preventiva e preditiva em sistemas de energia estabilizada 
                     e ininterrupta. Manutenção e desenvolvimento de equipamento para automação de granjas.
-                    Manutenção e instalação de computadores, modems, impressoras e participação no projeto de 
+                    Manutenção e instalação de computadores, modems, impressoras, máquinas do sistemas de apostas e participação no projeto de 
                     reforma do placar eletrônico no Jockey Club do Paraná.
                     </h5>
 
