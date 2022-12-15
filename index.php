@@ -62,7 +62,7 @@
                 <h4>Ou então, faça o download do meu cartão virtual:</h4>  
                 <a href="docs/scheleder.pdf" class="nav-link">
                             <ion-icon size="large" name="newspaper-outline"></ion-icon>   
-                            cv_scheleder.pdf</a>
+                            scheleder.pdf</a>
                 </div>              
             </main>
          <footer>
