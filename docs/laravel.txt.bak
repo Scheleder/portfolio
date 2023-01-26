@@ -120,7 +120,7 @@ Route::controller(OrderController::class)->group(function () {
     Route::get('/orders/{id}', 'show');
     Route::post('/orders', 'store');});
 
-Auth::routes(); //a partir daqui somente com autenticação
+Auth::routes(); //a partir daqui somente com autrenticação
 Route::get('/home', [HomeController::class, 'home']);
 Route::get('/users', [HomeController::class, 'showAllUsers']);
 
