@@ -63,8 +63,8 @@
                     <h1>Projetos e Realização Profissional</h1> 
                     
                     <h4><ion-icon size="normal" name="create"></ion-icon> APLICAÇÃO - GERENCIADOR DE AGENDAMENTOS</h4>
-                    <h5>Aplicação desenvolvida em LARAVEL, com acesso via web, responsável pela gestão de cursos, matriculas 
-                        e agendamentos de pacientes nas aulas de pós graduação e residência clínica do Instituto BRA de 
+                    <h5>Aplicação desenvolvida em LARAVEL, com acesso via web, responsável pela gestão de cursos, matriculas, 
+                        relatórios e agendamentos de pacientes nas aulas de pós graduação e residência clínica do Instituto BRA de 
                         Capacitação e Treinamento, em Curitiba.</h5>
 
                     <h4><ion-icon size="normal" name="code-working"></ion-icon> WEBSERVICE - GERENCIADOR DE BACKUPS PARA AUTOMAÇÃO INDUSTRIAL</h4>
