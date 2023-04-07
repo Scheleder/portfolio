@@ -60,11 +60,10 @@
                     negociação com clientes e fornecedores,
                     desenvolvimento de aplicações, websites, equipamentos e projetos eletrônicos.
                     </p>
-                    Tenho conhecimento em algumas linguagens de programação 
-                    (Java, JavaSript, PHP, C, C#, Asssembly, Delphi, HTML, CSS...),
+                    Desenvolvo aplicações em Java, JavaSript, PHP, C, C#, Asssembly, Delphi, HTML, CSS...,
                     frameworks como Laravel, Spring, ASP.NET, Node, React e Bootstrap, 
                     banco de dados SQL, Postgres, MongoDB e MariaDB, plataforma Github e 
-                    desenvolvimento na plataformas Windows, Linux e Android para aplicações mobile e desktop.                    
+                    desenvolvimento web e nas plataformas Windows, Linux e Android para aplicações mobile e desktop.                    
                     </h4> 
                 </div>     
             </main>
