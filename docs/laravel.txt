@@ -22,11 +22,52 @@ cd nome_do_projeto
 php artisan serve
 http://localhost:8000
 
+
+########## AUTENTICAÇÃO BREEZE
+https://www.jlgregorio.com.br/2022/11/29/autenticacao-no-laravel-9-com-o-laravel-breeze/
+
+php artisan migrate   //cria tabela de usuarios e tokens
+composer require laravel/breeze --dev  //baixa as dependencias
+php artisan breeze:install //instala o breeze e o vite com opções
+
+#baixa as dependências JS
+npm install
+
+#gera os arquivos CSS e JS otimizados
+# TailwindCSS
+npm run dev
+
+//TESTE VAI APARECER LOGIN E REGISTER NO CANTO SUPERIOR DIREITO
+php artisan serve
+Registrar Usuário
+
+app\Http\Controllers\Auth
+resources\views\auth
+resources\views\profile
+
+routes\web.php -> Adicionou rotas para login
+php artisan route:list //lista rotas
+
+#Protegendo diretamente no arquivo de rotas web.php
+Route::get("/products")->middleware("auth");
+
+#Protegendo o controlador no seu método construtor
+public function __construct(){
+    $this->middleware('auth')
+}
+
+
+
+
 ########### MODELS
 php artisan make:model Product
 COM MIGRATIONS CONTROLLERS FORMS
 php artisan make:model Product --migration --controller --resource --requests
 ou php artisan make:model Product --all
+
+EDITAR CAMPOS NO MODELO
+EDITAR MIGRATIONS
+
 visualizar:
 php artisan model:show Product
 campos editaveis:
@@ -60,13 +101,7 @@ class User extends Authenticatable{
     public function classesAsStudent(){
         return $this->belongsToMany(Classe::class, 'class_student', 'user_id', 'classe_id');}}
 
-
-########## AUTENTICAÇÃO
-composer require laravel/ui
-php artisan ui vue --auth
-npm install
-npm run dev
-
+php
 ########## CONTROLLERS
 php artisan make:controller ProductController
 php artisan make:controller ProductController --model=Product --resource //CRUD
@@ -148,6 +183,11 @@ php artisan route:list
 @csrf ou <input type="hidden" name="_token" value="{{ csrf_token() }}">
 </form>
 
+######### CHAMANDO ACTIONS 
+diretamente dos controllers
+use App\Http\Controllers\HomeController;
+return redirect()->action([HomeController::class, 'index']);
+
 ########## REQUESTS
 $request->host();
 $request->httpHost();
@@ -165,6 +205,56 @@ $request->mergeIfMissing(['votes' => 0]);
 $username = $request->old('username');
 $path = $request->photo->path();
 $extension = $request->photo->extension();
+
+######### NOTIFICAÇÕES
+$ composer require mckenziearts/laravel-notify
+config/app.php
+'providers' => [
+    ...
+    Mckenziearts\Notify\LaravelNotifyServiceProvider::class
+    ...
+];
+
+$ php artisan vendor:publish --provider="Mckenziearts\Notify\LaravelNotifyServiceProvider"
+$ composer dump-autoload
+
+<!doctype html>
+<html>
+    <head>
+        <title>Laravel Notify</title>
+        @notifyCss
+    </head>
+    <body>
+
+
+        <x-notify::notify />
+        @notifyJs
+    </body>
+</html>
+
+notify()->success('Welcome to Laravel Notify ⚡️') 
+notify()->success('Welcome to Laravel Notify ⚡️', 'My custom title')
+connectify('success', 'Connection Found', 'Success Message Here')
+drakify('error') // for error alert
+drakify('success') // for success aler
+smilify('success', 'You are successfully reconnected')
+emotify('success', 'You are awesome, your data was successfully created')
+
+Config file are located at config/notify.php
+'preset-messages' => [
+    'user-updated' => [
+        'message' => 'The user has been updated successfully.',
+        'type'    => 'success',
+        'model'   => 'connect',
+        'title'   => 'User Updated',
+    ],
+    'user-deleted' => [
+        'message' => 'The user has been deleted successfully.',
+        'type'    => 'success',
+        'model'   => 'connect',
+        'title'   => 'User Deleted',
+    ],
+],
 
 ######### SALVANDO ARQUIVOS
 if($request->hasFile('image') && $request->file('image')->isValid()) {
@@ -192,9 +282,15 @@ return response('Hello World')
 		
 ######### COMPARTILHAR VARIAVEL COM TODAS AS VIEWS
 EM App\Providers\AppServiceProvider
+
+use Illuminate\Support\Facades\View;
 public function boot(){
-        View::share('key', 'value');
-    }
+        View::share('key', 'value');    
+}
+		
+######### LER VARIAVEL PHP NO JAVASCRIPT
+var soma = <?=$total?>;
+
 	
 ######### COLOCAR VIEWS EM CACHE ou LIMPAR CACHE
 php artisan view:cache
@@ -202,6 +298,17 @@ php artisan view:clear
 
 ######### REFERENCIAR ARQUIVOS ESTATICOS NA PASTA PUBLIC
 <script src="{{ asset('/js/scripts.js') }}"></script>
+
+
+######### TRADUZIR
+composer require lucascudo/laravel-pt-br-localization --dev
+php artisan vendor:publish --tag=laravel-pt-br-localization
+// Altere Linha 85 do arquivo config/app.php para:
+'locale' => 'pt-BR',
+//Linha 94 'fallback_locale' => 'en',  altere para 
+'fallback_locale' => 'pt-BR'
+// Altere Linha 72 do arquivo config/app.php para:
+'timezone' => 'America/Sao_Paulo',
 
 ########## DIRETIVAS NO BLADE
 {{-- This comment will not be present in the rendered HTML --}}
@@ -562,3 +669,68 @@ LoadModule alias_module modules/mod_alias.so
 
 ########## DEPLOY HOSTINGER
 + INSTALAR LARAVEL VIA HOSTINGER
+
+retirar pontou ou virgulas da string
+            actualValue.replace(/[\D]+/g, ''));
+			
+
+
+console.log(moneyMask(1579846));
+saída: 
+15.798,46;
+
+        $("#checkbox-all").click(function () {
+            $('input:checkbox').not(this).prop('checked', this.checked);
+            if ($(this).prop("checked") == true) {
+                sumValues();
+            }else{
+                $("#sum-cost").text('0,00');
+                $("#sum-qtty").text(0);
+            }
+        });
+		
+var cpf = "12345678901";
+var resultado = cpf.replace(/(\d{ 3 })(\d{ 3 })(\d{ 3 })(\d{ 2 })/, "$1.$2.$3-$4");
+
+############ VALIDAR CPF
+		function validarCPF($cpf) {
+    // Remove os caracteres que não são números
+    $cpf = preg_replace('/[^0-9]/is', '', $cpf);
+    
+    // Verifica se o CPF possui 11 dígitos
+    if (strlen($cpf) != 11) {
+        return false;
+    }
+    
+    // Verifica se todos os dígitos são iguais
+    if (preg_match('/(\d)\1{10}/', $cpf)) {
+        return false;
+    }
+
+    // Calcula o primeiro dígito verificador
+    $soma = 0;
+    for ($i = 0; $i < 9; $i++) {
+        $soma += ($cpf[$i] * (10 - $i));
+    }
+    $digito1 = 11 - ($soma % 11);
+    if ($digito1 > 9) {
+        $digito1 = 0;
+    }
+    
+    // Calcula o segundo dígito verificador
+    $soma = 0;
+    for ($i = 0; $i < 10; $i++) {
+        $soma += ($cpf[$i] * (11 - $i));
+    }
+    $digito2 = 11 - ($soma % 11);
+    if ($digito2 > 9) {
+        $digito2 = 0;
+    }
+    
+    // Verifica se os dígitos verificadores estão corretos
+    if (($cpf[9] != $digito1) || ($cpf[10] != $digito2)) {
+        return false;
+    }
+    
+    return true;
+}
