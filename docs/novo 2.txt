@@ -1,0 +1,5 @@
+<a href="{{etapa.url}}" title="Anexo" target="_blank"><i class="fa fa-paperclip text-primary" ng-if="etapa.url" style="padding-top:4px"></i></a>
+
+<i class="fa fa-stack-overflow fa-lg" ng-click="etapa.url" title="Anexo" target="_blank" ng-class="{'text-primary': etapa.url}"></i>
+
+produtoController linha 1674

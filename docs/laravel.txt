@@ -25,7 +25,7 @@ http://localhost:8000
 
 ########## AUTENTICAÇÃO BREEZE
 https://www.jlgregorio.com.br/2022/11/29/autenticacao-no-laravel-9-com-o-laravel-breeze/
-
+configura .env
 php artisan migrate   //cria tabela de usuarios e tokens
 composer require laravel/breeze --dev  //baixa as dependencias
 php artisan breeze:install //instala o breeze e o vite com opções
@@ -36,6 +36,11 @@ npm install
 #gera os arquivos CSS e JS otimizados
 # TailwindCSS
 npm run dev
+npm run build
+
+public/build/manifest.json             0.26 kB │ gzip:  0.13 kB
+public/build/assets/app-45c3c7cf.css  34.28 kB │ gzip:  6.24 kB
+public/build/assets/app-4a08c204.js 
 
 //TESTE VAI APARECER LOGIN E REGISTER NO CANTO SUPERIOR DIREITO
 php artisan serve
@@ -56,8 +61,211 @@ public function __construct(){
     $this->middleware('auth')
 }
 
+######### TRADUZIR
+php artisan lang:publish
+composer require lucascudo/laravel-pt-br-localization --dev
+php artisan vendor:publish --tag=laravel-pt-br-localization
+// Altere Linha 85 do arquivo config/app.php para:
+'locale' => 'pt_BR',
+//Linha 94 'fallback_locale' => 'en',  altere para 
+'fallback_locale' => 'pt_BR'
+// Altere Linha 72 do arquivo config/app.php para:
+'timezone' => 'America/Sao_Paulo',
+
+######### CONFIGURAR DATABASE
+.env
+DB_CONNECTION=sqlite 
+DB_CONNECTION=mysql 
+DB_HOST=127.0.0.1 
+DB_PORT=3306 
+DB_DATABASE=laravel 
+DB_USERNAME=root 
+DB_PASSWORD= 
+
+######### CONFIGURAR EMAIL
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=scheleder.app@gmail.com
+MAIL_PASSWORD=zsbeddqyqnqfwrva
+MAIL_ENCRYPTION=ssl
+MAIL_FROM_ADDRESS=scheleder.app@gmail.com
+MAIL_FROM_NAME="${APP_NAME}"
+
+Em App/Models/User.php:
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+lass User extends Authenticatable implements MustVerifyEmail
+{
+    use Notifiable;
+
+######### CONFIGURAR APP_NAME APP_URL
+.env
+importante para o email
+
+Depois rodar php artisan migrate
+
+######### ENVIAR EMAIL PELO LARAVEL
+configurar .env
+php artisan make:mail Contact
+php artisan make:controller ContactController
+criar rotas, 
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+formularios
+
+######### CONFIGURAR APP LOGO
+em 
+resources\views\components\application-logo.blade.php
+48px
+
+######### COMPARTILHAR VARIAVEL COM TODAS AS VIEWS
+EM App\Providers\AppServiceProvider
+
+use Illuminate\Support\Facades\View;
+
+public function boot(){
+        View::share('version', '1.0.0');    
+}
+
+######### NOTIFICAÇÕES
+$ composer require mckenziearts/laravel-notify
+config/app.php
+'providers' => [
+    ...
+    Mckenziearts\Notify\LaravelNotifyServiceProvider::class
+    ...
+];
+
+$ php artisan vendor:publish --provider="Mckenziearts\Notify\LaravelNotifyServiceProvider"
+$ composer dump-autoload
+
+<!doctype html>
+<html>
+    <head>
+        <title>Laravel Notify</title>
+        @notifyCss
+    </head>
+    <body>
 
 
+        <x-notify::notify />
+        @notifyJs
+    </body>
+</html>
+
+EDITAR posição da NOTIFICAÇÃO, 
+vendor\mckenziearts\laravel-notify\resources\views\notifications\toast.blade.php
+<div class="notify mt-14 fixed inset-0 flex justify-end px-4 py-6 pointer-events-none items-start" style="z-index: 9999999;>
+{{--  <x-notify::notify-title :title="session()->get('notify.title') ?? session()->get('notify.type')" /> --}}
+
+Para habilitar quebra de linhas nas mensagens (com <br>), edite:
+vendor\mckenziearts\laravel-notify\resources\views\components\notify-content.blade.php
+ troque: {{ $content }}
+ por: {!! $content !!}
+ 
+notify()->success('Welcome to Laravel Notify ⚡️') 
+notify()->success('Welcome to Laravel Notify ⚡️', 'My custom title')
+connectify('success', 'Connection Found', 'Success Message Here')
+drakify('error') // for error alert
+drakify('success') // for success alert
+smilify('success', 'You are successfully reconnected')
+emotify('success', 'You are awesome, your data was successfully created')
+
+Adding below CSS rule fixes the issue
+#laravel-notify{
+z-index: 99999;
+}
+
+Edit the file:
+vendor\mckenziearts\laravel-notify\resources\views\notifications\toast.blade.php
+
+Config file are located at config/notify.php
+'preset-messages' => [
+    'user-updated' => [
+        'message' => 'The user has been updated successfully.',
+        'type'    => 'success',
+        'model'   => 'connect',
+        'title'   => 'User Updated',
+    ],
+    'user-deleted' => [
+        'message' => 'The user has been deleted successfully.',
+        'type'    => 'success',
+        'model'   => 'connect',
+        'title'   => 'User Deleted',
+    ],
+],
+
+######## GERAR PDF
+composer require barryvdh/laravel-dompdf
+
+em config/app.php:
+
+'providers' => [
+	....
+	Barryvdh\DomPDF\ServiceProvider::class,
+],
+  
+'aliases' => [
+	....
+	'PDF' => Barryvdh\DomPDF\Facade::class,
+]
+
+Route::get('generate-pdf', [PDFController::class, 'generatePDF']);
+ 
+php artisan make:controller PDFController
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use PDF;
+
+class PDFController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function generatePDF()
+    {
+        $data = [
+            'title' => 'Exemplo PDF',
+            'date' => date('d/m/Y')
+        ];
+
+        $pdf = PDF::loadView('pdf.myPDF', $data);
+
+        //$pdf = PDF::loadView('shop.coupon', ['sale' => $sale, 'setting' => $setting]);
+        //$pdf->setPaper('A7', 'portrait');
+        $pdf->setPaper('A4', 'portrait');
+        //$pdf->setPaper([0, 0, 807.874, 221.102], 'landscape');
+        //return $pdf->download('template.pdf');
+        return $pdf->stream('lista.pdf');
+
+    }
+}
+########### IMAGE SAVE e RESIZE
+composer require intervention/image
+em config/app.php
+ providers
+ Intervention\Image\ImageServiceProvider::class,
+ aliases
+'Image' => Intervention\Image\Facades\Image::class,
+
+use Intervention\Image\Facades\Image;
+        if($request->hasFile('logo') && $request->file('logo')->isValid()) {
+            if($setting->logo != 'logo.jpg'){
+                unlink(public_path('img/').$setting->logo);
+                }
+            $requestImage = $request->logo;
+            $extension = $requestImage->extension();
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            $data['logo'] = $imageName;
+            Image::make($requestImage)->resize(60, 60)->save(public_path('img/').$imageName, 60, 'jpg');
+        }
+		
 
 ########### MODELS
 php artisan make:model Product
@@ -107,16 +315,6 @@ php artisan make:controller ProductController
 php artisan make:controller ProductController --model=Product --resource //CRUD
 php artisan make:controller ProductController --model=Product --resource --requests //CRUD + FORMS
 
-######### CONFIGURAR DATABASE
-.env
-DB_CONNECTION=sqlite 
-DB_CONNECTION=mysql 
-DB_HOST=127.0.0.1 
-DB_PORT=3306 
-DB_DATABASE=laravel 
-DB_USERNAME=root 
-DB_PASSWORD= 
-
 ########## CRIAR DATABASE E TABELAS
 php artisan make:migration create_product_table
 php artisan migrate
@@ -134,6 +332,9 @@ e roda: php artisan migrate
 php artisan make:seeder UserSeeder
 php artisan tinker
 User::factory()->count(200)->create()
+
+######### PUBLICAR PROVIDERS E TAGS
+ php artisan vendor:publish
 
 ######### ROTAS
 web.php
@@ -206,55 +407,7 @@ $username = $request->old('username');
 $path = $request->photo->path();
 $extension = $request->photo->extension();
 
-######### NOTIFICAÇÕES
-$ composer require mckenziearts/laravel-notify
-config/app.php
-'providers' => [
-    ...
-    Mckenziearts\Notify\LaravelNotifyServiceProvider::class
-    ...
-];
 
-$ php artisan vendor:publish --provider="Mckenziearts\Notify\LaravelNotifyServiceProvider"
-$ composer dump-autoload
-
-<!doctype html>
-<html>
-    <head>
-        <title>Laravel Notify</title>
-        @notifyCss
-    </head>
-    <body>
-
-
-        <x-notify::notify />
-        @notifyJs
-    </body>
-</html>
-
-notify()->success('Welcome to Laravel Notify ⚡️') 
-notify()->success('Welcome to Laravel Notify ⚡️', 'My custom title')
-connectify('success', 'Connection Found', 'Success Message Here')
-drakify('error') // for error alert
-drakify('success') // for success aler
-smilify('success', 'You are successfully reconnected')
-emotify('success', 'You are awesome, your data was successfully created')
-
-Config file are located at config/notify.php
-'preset-messages' => [
-    'user-updated' => [
-        'message' => 'The user has been updated successfully.',
-        'type'    => 'success',
-        'model'   => 'connect',
-        'title'   => 'User Updated',
-    ],
-    'user-deleted' => [
-        'message' => 'The user has been deleted successfully.',
-        'type'    => 'success',
-        'model'   => 'connect',
-        'title'   => 'User Deleted',
-    ],
-],
 
 ######### SALVANDO ARQUIVOS
 if($request->hasFile('image') && $request->file('image')->isValid()) {
@@ -280,17 +433,11 @@ return response($content)
 return response('Hello World')
 		->cookie('name', 'value', $minutes);
 		
-######### COMPARTILHAR VARIAVEL COM TODAS AS VIEWS
-EM App\Providers\AppServiceProvider
 
-use Illuminate\Support\Facades\View;
-public function boot(){
-        View::share('key', 'value');    
-}
 		
 ######### LER VARIAVEL PHP NO JAVASCRIPT
 var soma = <?=$total?>;
-
+var sales =  {{ Js::from($data) }};
 	
 ######### COLOCAR VIEWS EM CACHE ou LIMPAR CACHE
 php artisan view:cache
@@ -298,17 +445,6 @@ php artisan view:clear
 
 ######### REFERENCIAR ARQUIVOS ESTATICOS NA PASTA PUBLIC
 <script src="{{ asset('/js/scripts.js') }}"></script>
-
-
-######### TRADUZIR
-composer require lucascudo/laravel-pt-br-localization --dev
-php artisan vendor:publish --tag=laravel-pt-br-localization
-// Altere Linha 85 do arquivo config/app.php para:
-'locale' => 'pt-BR',
-//Linha 94 'fallback_locale' => 'en',  altere para 
-'fallback_locale' => 'pt-BR'
-// Altere Linha 72 do arquivo config/app.php para:
-'timezone' => 'America/Sao_Paulo',
 
 ########## DIRETIVAS NO BLADE
 {{-- This comment will not be present in the rendered HTML --}}

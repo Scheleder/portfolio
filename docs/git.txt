@@ -1,71 +1,463 @@
-######### criando um novo repositório
-crie uma nova pasta, abra-a e execute o comando
-git init
+GIT ERRO
 
-######### obtenha um repositório
-git clone /caminho/para/o/repositório
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
 
-######### fluxo de trabalho
-Working Directory -> Pasta de trabalho
-INDEX -> temporário
-HEAD -> repositório local
-REMOTO -> repósitorio remoto
+Please make sure you have the correct access rights
+and the repository exists.
+>>
+	
+>>with HTTPS
+git remote add origin https://github.com/Scheleder/pindura.git
 
-######### adicionar ao INDEX
-git add <arquivo>
-git add *
+COMANDOS BÁSICOS
 
-######### adicionar ao HEAD
-git commit -m "comentários das alterações"
 
-######### adicionar ao REMOTO
-git push origin master ->master=branch desejada
 
-######### adicionar repositório remoto
-git remote add origin <servidor>
+COMPARAÇÃO
 
-######### adicionar branch (ramificação)
-git checkout -b funcionalidade_x
+git diff
+- Compara diferenças entre o que já está commitado e o que está modificado
 
-######### mudar de branch 
-git checkout master
+git diff --cached
+git diff --staged
+- Compara diferenças entre o que já está commitado e o que está staged
 
-######### excluir branch
-git branch -d funcionalidade_x
 
-######### enviar branch para o repositório REMOTO
-git push origin <funcionalidade_x>
 
-######### atualizar & mesclar
-git pull
+HISTÓRICOS DE COMMITS 
 
-######### mesclar branch
-git merge <branch>
-
-######### visualizar alterações
-git diff <branch origem> <branch destino>
-
-######### obter o id do commit
 git log
+- listagem dos commits (do mais recente para o mais antigo)
 
-######### rotular o release
-git tag 1.0.0 1b2e1d63ff ->1b2e1d63ff = id do commit
+git log --oneline
+- usando oneline para resumir as informações do commit
 
-######### desfazer alterações locais
-git checkout -- <arquivo>
+git log -1
+git log -2
+git log -3
+- ver apenas 1, 2 ou 3 comits e assim sucessivamente
 
-######### desfazer todas as alterações locais
-git fetch origin
-git reset --hard origin/master
+git log -p
+git log --patch
+- traz o commit e traz também os diffs de cada commit
 
-######### fazer inclusões interativas
-git add -i
+git log --stat
+- traz o commit e traz também o nome dos arquivos alterados de cada commit
 
-…or create a new repository on the command line
-echo "# MoviesWebSite" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/Scheleder/MoviesWebSite.git
-git push -u origin main
+git log <branch>
+git log <branch> <comandos>
+- traz a listagem de commits da branch especificada no comando
+
+
+
+ALTERANDO COMMITS E MENSAGENS
+
+git commit --amend -m "Mensagem nova para ser alterada"
+- deleta o commit em HEAD e refaz o commit novamente com uma nova mensagem.
+- O HASH VAI MUDAR POIS HAVERÁ DELEÇÃO
+- CUIDADO. SE ALGUEM ESTIVER TRABALHANDO COM ESSE COMMIT TAMBÉM PODE DAR CONFLITO. POIS ESTÁ DELETANDO ELE.
+
+git commit --amend --no-edit
+- commita o que estiver staged no commit que estiver em HEAD sem modificar a mensagem.
+- O HASH VAI MUDAR POIS HAVERÁ DELEÇÃO
+- CUIDADO. SE ALGUEM ESTIVER TRABALHANDO COM ESSE COMMIT TAMBÉM PODE DAR CONFLITO. POIS ESTÁ DELETANDO ELE.
+
+
+
+MOVENDO ENTRE COMMITS E BRANCHES
+
+git checkout <hash>
+ex.: git checkout sb12bdh3
+- Voltar a um commit de acordo com o número do hash escolhido
+
+git checkout <branch>
+ex.: git checkout main
+git switch <branch>
+- Voltar para o commit HEAD (mais recente) da branch
+
+git checkout -f <branch>
+- muda de branch e remove todas as alterações que estiverem rastreadas (deixando as modificações não rastreadas)
+
+git switch -
+- muda para a última branch que estava antes dessa
+
+git checkout -b <branch> <remote_branch>
+- baixa uma branch do repositório e vai pra ela. Ou melhor, cria uma branch local com base na branch do repositório e checka ela.
+
+
+
+REVERTENDO, DESCARTANDO E LIMPANDO ALTERAÇÕES
+
+git checkout <arquivo>
+ex.: git checkout index.txt
+- Reverte as alterações do arquivo rastreado/modificado para a última versão
+
+git checkout .
+- Reverte a versão de TODOS os arquivos rastreados/modificados.
+
+git clean -f
+- Remover arquivos não rastreados usando force
+- Não vai remover arquivos que já foram colocados em modified pelo comando "add" e depois removidos pelo "rm" e passaram a status modified
+
+git restore --staged <arquivo>
+git rm --cached <arquivo>
+- Remover arquivos rastreados/stageds.
+
+git restore <arquivo>
+- descarta mudanças do arquivo e retorna seu status para o do ultimo commit (mas só aparece quando temos um commit já feito)
+
+git rm <arquivo>
+- descarta mudanças do arquivo e retorna seu status para unstaged
+
+git reset --hard
+- discarta tudo o que estiver sendo feito desde o último commit, desde modified, staged e unstaged
+
+
+
+IGNORANDO OU RASTREANDO ARQUIVOS
+
+git update-index --skip-worktree <arquivo>
+- Atualizar o controle de rastreio de arquivos deixando de rastrear o arquivo nomeado
+
+git update-index --no-skip-worktree <arquivo>
+- Atualizar o controle de rastreio de arquivos voltando a rastrear o arquivo nomeado
+
+find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c "cd '{}' && pwd && git ls-files -z ${pwd} | xargs -0 git update-index --skip-worktree" \;
+- Atualizar o controle de rastreio de arquivos deixando de rastrear todos os arquivos dentro da pasta atual e suas subpastas. Não esquecer de usar o comando cd para entrar na pasta antes de usar o comando
+- Só funciona no git bash.
+
+find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c "cd '{}' && pwd && git ls-files -z ${pwd} | xargs -0 git update-index --no-skip-worktree" \;
+- Atualizar o controle de rastreio de arquivos voltando a rastrear todos os arquivos dentro da pasta atual e suas subpastas. Não esquecer de usar o comando cd para entrar na pasta antes de usar o comando
+- Só funciona no git bash.
+
+
+
+CONFIGURANDO REPOSITÓRIOS REMOTES
+
+git remote -v
+- lista os endereços de repositórios associados ao git
+
+git remote add <nome do remote> <endereço do remote>
+ex.: git remote add origin https://github.com/exemplo
+ex.: git remote add abc https://github.com/exemplo
+- adiciona um endereço de repositório ao git. O nome comum de usar primariamente é origin, mas não necessariamente é o nome a ser escolhido. No exemplo damos o nome abc ao segundo.
+
+git remote set-url <nome do remote> <endereço do remote>
+ex.: git remote set-url origin https://gitlab.com/exemplo2
+- altera um endereço de repositório ao git
+
+
+
+BRANCHES
+
+git branch
+git branch --list
+- lista as branchs locais
+
+git branch -a
+- lista todas as branchs locais e remotas
+
+git branch <branch>
+- cria uma branch com o nome escolhido
+
+git checkout -b <branch>
+git switch -c <branch>
+- cria uma branch com o nome escolhido e já passa para esta branch
+
+git checkout -b <branch> <remote_branch>
+- baixa uma branch do repositório e vai pra ela. Ou melhor, cria uma branch local com base na branch do repositório e checka ela.
+
+git push -u <remote> <branch>
+git push --set-upstream <remote> <branch>
+ex.: git push --set-upstream origin branch_1
+- manda a branch local para o servidor (github, gitlab, bitbucket).
+
+git branch -d <branch>
+- deleta localmente a branch específica
+
+git branch -D <branch>
+- deleta localmente a branch específica forçando a deleção para o caso de mensagem de atenção impedindo.
+
+git push --delete <remote> <branch>
+- deleta a branch do repositório remoto
+
+git branch -m <novo nome da branch>
+- altera o nome da branch na qual estamos checkados
+
+git branch -m <branch> <novo nome da branch>
+- altera o nome da branch específica que passamos no comando para um novo nome
+
+
+
+PULL
+
+git pull
+- Incorpora as alterações de um repositório remoto no ramo atual.
+
+git pull <remote> <branch_alvo>
+- TESTAR SE FUNCIONA: Incorpora as alterações de um repositório remoto no ramo ESPECIFICADO.
+
+git fetch <remote> <branch_fonte>:<branch_destino>
+ex.: git fetch origin master:master
+- faz fetch das alterações qe existem no remote de uma branch específica.
+- pode ser usado para buscar as alterações de uma branch quando estamos em outra. E após isso podemos fazer o merge com 'git merge <branch>'
+
+
+
+MERGE
+
+git merge <branch_da_qual_as_mudanças_vem>
+- traz as mudanças da branch especificada para a branch atual
+
+git branch --no-merged
+- mostra uma lista das branchs que não foram mergeadas com a atual
+
+git branch --merged
+- mostra uma lista das branchs que foram mergeadas com a atual
+
+git merge --abort
+git reset --hard
+- cancela o merge que esteja com status de conflito
+
+git checkout --ours <arquivo>
+git add .
+- resolve o conflito de merge de um arquivo aceitando o formato da branch atual
+
+git checkout --theirs <arquivo>
+git add .
+- resolve o conflito de merge de um arquivo aceitando o formato da branch que está sendo mergeada
+
+
+
+TAG
+
+git tag
+git tag --list
+git tag -l
+- mostra a lista de todas as tags do projeto
+
+git tag -n
+- mostra a lista de todas as tags do projeto com as mensagens
+
+git tag <nome_tag>
+- cria uma tag lightweight com o nome específico no último commit da branch atual
+
+git tag -a -m <mensagem_tag> <nome_tag>
+- cria uma tag annotated com mensagem e com o nome específico no último commit da branch atual
+
+git tag <nome_tag> <hash_do_commit>
+- cria uma tag lightweight com o nome específico no commit especificado
+- pode ser usado pra tag annotated também se usar os comandos -a -m.
+
+git show <tag>
+- mostra os detalhes do commit com a tag específica, inclusive nome, quem fez, mensagem da tag, mudanças do commit, etc.
+
+git push <remote> <nome_tag>
+- manda as tags pro servidor
+
+git push --tags
+- manda todas as tags pro servidor. Mas não é interessante porque se tiver alguma tag que já tenha sido apagada de lá por algum motivo, estará sendo enviada de volta.
+
+git checkout <nome_tag>
+- Voltar a um commit de acordo com a tag especificada
+
+git diff <nome_tag> <nome_tag>
+- comparação de diferenças entre commits com as tags especificadas
+
+git tag -d <nome_tag>
+- apagando a tag localmente
+
+git push --delete <remote> <nome_tag>
+- apaga a tag do servidor
+
+
+
+STASH
+
+git stash
+- salva numa memória as mudanças rastreadas e limpa as modificações da branch atual
+
+git stash list
+- lista os stashs salvos na memória
+
+git stash apply
+- retorna as mudanças mais atuais da memória para a branch atual. Sem limpar a memória
+
+git stash apply <stash_posição>
+ex.: git stash apply stash@{1}
+- retorna as mudanças do stash posição 1 da memória para a branch atual. Sem limpar a memória
+
+git stash pop
+- retorna as mudanças mais atuais da memória para a branch atual. limpando a memória
+- pode ser utilizado como o stash apply especificando quando posição da memória vai retornar
+
+git stash drop
+- remove as mudanças mais atuais da memória.
+- pode ser utilizado como o stash apply especificando quando posição da memória vai remover
+
+git stash branch <nome_branch> <stash_posição>
+- cria uma nova branch com o nome especificado a partir de um stash em memória também especificado por sua posição
+
+
+
+COMANDOS AVANÇADOS
+
+
+
+REVERTENDO COMMITS
+
+git revert <commit>
+git revert HEAD
+- cria um novo commit desfazendo as alterações que foram feitas no commit especificado no comando
+- pode ser usado o comando --no-edit para não abrir uma edição da mensagem do commit
+
+
+
+DESFAZENDO/DELETANDO COMMITS
+
+git reset --hard
+- todas as mudanças rastreadas sejam desfeitas
+
+git reset --hard <commit>
+- desfaz commits até o commit especificado e coloca o HEAD nele
+
+git reset --hard <commit_ou_HEAD>~<numero>
+ex.: git reset --hard HEAD~1
+- desfaz uma quantidade específica de commits a partir de onde estiver o HEAD. Esses commits são deletados, ignorados no histórico do log
+
+git reset --mixed HEAD~<numero>
+- desfaz uma quantidade específica de commits a partir de onde estiver o HEAD. Mas as alterações que haviam no commit são jogados para a área unstaged.
+
+git reset --soft HEAD~<numero>
+- desfaz uma quantidade específica de commits a partir de onde estiver o HEAD. Mas as alterações que haviam no commit são jogados para a área staged.
+
+
+
+FORÇANDO ENVIODE MUDANÇAS
+
+git push --force
+- força o envio de mudanças locais para o repositório. Mudanças que estejam apenas no repositório serão perdidas.
+- um uso importante pode ser para remover dados que não podem estar salvos no histórico de commits no servidor, como senhas etc.
+- outro uso importante também seria para retornar ao repositório mudanças que tenham sido deletadas completamente, mas que ainda tenhamos elas localmente e tenhamos certeza de que está correto.
+
+git push --force-with-lease
+- vai sobrescrever a linha do tempo do repositório, mas somente se nenhuma alteração for perdida
+
+
+
+REBASE
+(UM MERGE QUE NÃO DEIXA COMMIT DE MERGE NO HISTÓRICO)
+
+git rebase <branch>
+- troca a base da branch atual para outra base mais atual na branch especificada
+- recomendação: não utilizar rebase em branchs públicas, utilizadas por outras pessoas. Porque ele também vai sobrescrever o histórico de commits
+
+git rebase --abort
+- cancela o rebase que esteja com status de conflito
+
+git rebase --continue
+- após resolver os conflitos no rebase este comando efetiva o rebase
+
+git pull --rebase
+- vai no remote buscando os commits remotos, vai aplicá-los em cima da branch local atual, e se tiver algum commit a local a mais (ahead) ele vai ser reescrito em cima da mudança que vem do servidor
+- ou seja é uma forma de fazer um pull no caso de ter um rebase. E ajuda no caso de ter um commit a mais no local.
+
+git rebase --interactive <commit_ou_HEAD>~<numero>
+ex.: git rebase --interactive HEAD~3
+ex.: git rebase --interactive sg2w3a7~1
+git rebase -i <commit_ou_HEAD>~<numero>
+- faz a fusão de commits. Para juntar os commits no último commit mais recente terá que ser utilizada a opção squash no editor que vai abrir
+
+
+
+RECRIANDO BRANCH BASEADA NO SERVIDOR
+
+git fetch <remote> <branch>
+ex.: git fetch origin develop
+- traz parcialmente a branch remota para o repositório local. Será necessário fazer um cehckout para a branch em seguida.
+
+
+
+CHERRY PICK
+
+git cherry-pick <commit>
+- busca o commit especificado de uma outra branch e traz pra branch atual
+
+
+
+BISECT
+(UMA FORMA DE BUSCAR NO HISTÓRICO DE COMMITS EM QUAL COMMIT COMEÇOU UM ERRO)
+
+git bisect start
+- inicia a busca binária.
+- vai esperar o próximo comando
+
+git bisect good <commit>
+- informa-se o último commit conhecido no qual o código estava funcionando da maneira esperada.
+- vai esperar pelo próximo comando
+
+git bisect bad <commit>
+- informa-se o commit conhecido no qual o código está dando erro. E teremos um checkout para um commit no meio do caminho entre os dois ultimos.
+- vai esperar pelo próximo comando. Nest próximo comando terá que informar se o commit no qual teve o checkout está funcionando conforme o esperado ou não.
+
+git bisect good
+ou
+git bisect bad
+- teremos um checkout para um commit no meio do caminho.
+- será repetido a espera pelos comandos até terminar as iterações e no final retornará o commit no qual o problema teve origem.
+
+git bisect reset
+- ao terminar a iteração ainda nãoterminou o processo do bisect. É necessário fazer o bisect reset para finalizar.
+
+
+
+FETCH
+
+git fetch
+- vai trazer commits, branchs e tags para o repositório local.
+- Antes de executar um git pull fazemos um git fetch pra ver o que vai estar sendo trazido. 
+- Após o 'git fetch' podemos fazer um 'git log -a' e veremos as 'origin/branch' nas quais temos as alterações que estão no repositório remoto. 
+- E podemos até usar um 'git diff' pra comparar o local com o remoto.
+
+
+
+ALIAS
+
+git config --global alias.<comando_novo> <comando_representado>
+ex.: git config --global alias.s status
+- podemos gravar comandos novos para faciliar a chamada de comandos que utilizamos muito. No exemplo acima poderemos começar a usar 'git s' ao invés de 'git status'
+
+git config --global --unset alias.<comando_novo>
+- descarta os comandos que foram adicionados pelo usuário com o alias
+
+
+
+GREP
+
+git branch | grep <filtro>
+- no caso estamos usando o comando grep pra filtrar branchs com o nome que tenha o filtro que adicionamos no comando
+
+git log --oneline | grep <filtro>
+- no caso estamos usando o comando grep pra filtrar commits com o nome que tenha o filtro que adicionamos no comando
+
+git branch | findstr <filtro>
+- findstr é o mesmo comando do grep só que para o POWERSHELL
+
+
+
+COMO ESCREVER MENSAGEM COM MAIS DE UMA LINHA NOS COMMITS
+
+git commit -m 'Message
+>
+>goes
+>here'
+- ao escrever um commit e abrir uma aspas ou aspas simples e não fechar alguns shells vão deixar escrever mais em linhas até que feche a aspas.
+
+git commit -F- <<EOF
+>Message
+>
+>goes
+>here
+>EOF
+- alternativamente também é possivel usar um "here document" (também conhecido como heredoc).

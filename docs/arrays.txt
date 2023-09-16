@@ -1,0 +1,21 @@
+RETORNA SOMA APONTAMENTOS 
+return $scope.ordemProducao.apontamentosLivreOP.filter(a => a.produtoFluxoProducaoID == etapaID).reduce((a, b) => a + (b['quantidadeApontada'] || 0), 0);  
+
+<input type="tel" maxlength="15" onkeyup="handlePhone(event)" />
+Note que o input tem o type="tel", esse type é indicado para telefones e o mais legal é que no mobile esse campo abre o teclado numérico.
+
+máscara em Javascript:
+
+const handlePhone = (event) => {
+  let input = event.target
+  input.value = phoneMask(input.value)
+}
+
+const phoneMask = (value) => {
+  if (!value) return ""
+  value = value.replace(/\D/g,'')
+  value = value.replace(/(\d{2})(\d)/,"($1) $2")
+  value = value.replace(/(\d)(\d{4})$/,"$1-$2")
+  return value
+} 
+http://www.basef.com.br/old/

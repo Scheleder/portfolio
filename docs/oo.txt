@@ -1,0 +1,60 @@
+Paradigma de Programação Orientada a Objetos
+
+CLASSE
+Definição (modelo) de um objeto;
+OBJETO
+Instância de uma Classe, possui atributos e metódos;
+
+QUATRO PILARES DA OO
+ENCAPSULAMENTO
+Capacidade de esconder suas propriedades e implementação;
+ABSTRAÇÃO
+Capacidade de selecionar dados e propriedades do que é proposto;
+HERANÇA
+Capacidade de herdar atritutos e metódos da Classe Pai. Reutilização de código.
+POLIMORFISMO
+Capacidade de implementar metodos e propriedades diferentes;
+
+NAMESPACES
+Agrupamento de Classes;
+
+MODIFICADORES DE ACESSO
+PUBLIC
+Todas Classes acessam métodos e atributos;
+PRIVATE
+Somente dentro da mesma Classe acessam métodos e atributos;
+PROTECTED
+Somente dentro da mesma Classe ou onde são heradas acessam métodos e atributos;
+
+MÉTODOS
+GET
+Obtem dados;
+SET
+Seta dados;
+
+INTERFACES
+Implementa somente métodos;
+Possui assinatura dos métodos;
+Não possui construtor;
+Não possui propriedades;
+Por convenção começam com a letra I;
+
+CLASSES ABSTRATAS
+Classe de referência, base para outras Classes;
+Cria protótipos dos métodos, que são obrigatórios para quem herda esta Classe;
+Não se pode instanciar seus objetos;
+
+CLASSE SEALED
+Não pode ser herdada;
+
+MÉTODOS VIRTUAIS
+Mesmo nome do método herdado da Classe Pai;
+Sobrescreve o método declarado como virtual na classe pai e como override na classe filha.
+
+STRUCT
+Tipo que armazena tipos de dados diferentes;
+Não pode ser herdada;
+Pode possuir construtor;
+
+SOBRECARGA DE MÉTODOS
+Mesmo nome de método com argumentos diferentes;
