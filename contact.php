@@ -62,7 +62,7 @@
                             me@scheleder.com</a>
 </h1>
                             <h1>
-                            <a href="tel:+5541991248571" class="nav-link">
+                            <a href="https://api.whatsapp.com/send?phone=5541991248571" class="nav-link">
                             <ion-icon name="logo-whatsapp"></ion-icon>    
                             +55 (41) 991 248 571</a>
 </h1>
