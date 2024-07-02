@@ -1,0 +1,43 @@
+tendo o array:
+[
+  {
+    "imgImovelG1": "https://www.gestaoni.com.br/painel/storage/100723190329c47532bbb1e2883c902071591ae1ec9b/img_imoveis/g/94af83bdeb603b2301ce0a4e7446cccd.JPG",
+    "imgImovelT1": "https://www.gestaoni.com.br/painel/storage/100723190329c47532bbb1e2883c902071591ae1ec9b/img_imoveis/t/94af83bdeb603b2301ce0a4e7446cccd.JPG"
+  },
+  {
+    "imgImovelG2": "https://www.gestaoni.com.br/painel/storage/100723190329c47532bbb1e2883c902071591ae1ec9b/img_imoveis/g/d271035a8ff975b0f02d77b24037fa6e.JPG",
+    "imgImovelT2": "https://www.gestaoni.com.br/painel/storage/100723190329c47532bbb1e2883c902071591ae1ec9b/img_imoveis/t/d271035a8ff975b0f02d77b24037fa6e.JPG"
+  },
+  {
+    "imgImovelG3": "https://www.gestaoni.com.br/painel/storage/100723190329c47532bbb1e2883c902071591ae1ec9b/img_imoveis/g/584b684201c3cd5c32682d9fe3dff045.JPG",
+    "imgImovelT3": "https://www.gestaoni.com.br/painel/storage/100723190329c47532bbb1e2883c902071591ae1ec9b/img_imoveis/t/584b684201c3cd5c32682d9fe3dff045.JPG"
+  },
+]
+quero criar um novo array contendo os valores dos campos que contenham "imgImovelG" no nome da propriedade.
+
+$originalArray = [
+  [
+    "imgImovelG1" => "https://www.gestaoni.com.br/painel/storage/100723190329c47532bbb1e2883c902071591ae1ec9b/img_imoveis/g/94af83bdeb603b2301ce0a4e7446cccd.JPG",
+    "imgImovelT1" => "https://www.gestaoni.com.br/painel/storage/100723190329c47532bbb1e2883c902071591ae1ec9b/img_imoveis/t/94af83bdeb603b2301ce0a4e7446cccd.JPG"
+  ],
+  [
+    "imgImovelG2" => "https://www.gestaoni.com.br/painel/storage/100723190329c47532bbb1e2883c902071591ae1ec9b/img_imoveis/g/d271035a8ff975b0f02d77b24037fa6e.JPG",
+    "imgImovelT2" => "https://www.gestaoni.com.br/painel/storage/100723190329c47532bbb1e2883c902071591ae1ec9b/img_imoveis/t/d271035a8ff975b0f02d77b24037fa6e.JPG"
+  ],
+  [
+    "imgImovelG3" => "https://www.gestaoni.com.br/painel/storage/100723190329c47532bbb1e2883c902071591ae1ec9b/img_imoveis/g/584b684201c3cd5c32682d9fe3dff045.JPG",
+    "imgImovelT3" => "https://www.gestaoni.com.br/painel/storage/100723190329c47532bbb1e2883c902071591ae1ec9b/img_imoveis/t/584b684201c3cd5c32682d9fe3dff045.JPG"
+  ],
+];
+
+$newArray = [];
+
+foreach ($originalArray as $obj) {
+  foreach ($obj as $key => $value) {
+    if (strpos($key, "imgImovelG") === 0) {
+      $newArray[] = $value;
+    }
+  }
+}
+
+print_r($newArray);

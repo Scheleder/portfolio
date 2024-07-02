@@ -57,6 +57,22 @@
         
                     <h1>Experiência Profissional</h1> 
 
+                    <h4> <img src="img/boticario.png" alt="logo">GRUPO BOTICÁRIO (fev/2024)</h4>
+                    <h5><ion-icon name="id-card-outline"></ion-icon>
+                    Técnico de Automação.
+                    </h5>
+                    <h5><ion-icon name="construct"></ion-icon>
+                    Manutenção de sistemas de automação industrial.
+                    </h5>
+
+                    <h4> <img src="img/raletc.png" alt="logo">RALTEC BRASIL (fev/2023)</h4>
+                    <h5><ion-icon name="id-card-outline"></ion-icon>
+                    Desenvolvedor full-stack.
+                    </h5>
+                    <h5><ion-icon name="construct"></ion-icon>
+                    Desenvolvimento de aplicações diversas nas linguagens C#, javascript e PHP.
+                    </h5>
+
                     <h4> <img src="img/berry.png" alt="logo">BERRY GLOBAL (abr/2018 – jun/2022)</h4>
                     <h5><ion-icon name="id-card-outline"></ion-icon>
                     Analista de TI Industrial e Técnico de Automação.

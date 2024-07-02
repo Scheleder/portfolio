@@ -1,0 +1,72 @@
+CREATE procedure [dbo].[sp_LaudoQualidade] ( @LaudoQualidadeID int)
+AS
+SELECT * FROM LaudoQualidade (nolock) a WHERE a.LaudoQualidadeID = @LaudoQualidadeID;
+
+$tamMax = 30;
+if(strlen(utf8_encode($linhaMSB["nome"])) > $tamMax){ 
+	print substr($linhaMSB["nome"], 0, $tamMax) . '...';
+}else{
+	print $linhaMSB["nome"];
+}
+REMzXzIzNTM0XzI5MDkyMzE1MTgyOTo5ODIyN19VUzUxMDgx
+
+                            <optgroup label="Alaskan/Hawaiian Time Zone" data-select2-id="select2-data-64-jjve">
+                              <option value="AK" data-select2-id="select2-data-60-oq7n">Alaska</option>
+                              <option value="HI" data-select2-id="select2-data-65-p4my">Hawaii</option>
+                            </optgroup>
+                            <optgroup label="Pacific Time Zone" data-select2-id="select2-data-66-08mk">
+                              <option value="CA" data-select2-id="select2-data-67-54y8">California</option>
+                              <option value="NV" data-select2-id="select2-data-68-5n89">Nevada</option>
+                              <option value="OR" data-select2-id="select2-data-69-9yhx">Oregon</option>
+                              <option value="WA" data-select2-id="select2-data-70-8ay3">Washington</option>
+                            </optgroup>
+                            <optgroup label="Mountain Time Zone" data-select2-id="select2-data-71-mzo1">
+                              <option value="AZ" data-select2-id="select2-data-72-uhov">Arizona</option>
+                              <option value="CO" data-select2-id="select2-data-73-a47m">Colorado</option>
+                              <option value="ID" data-select2-id="select2-data-74-2m8t">Idaho</option>
+                              <option value="MT" data-select2-id="select2-data-75-yvm7">Montana</option>
+                              <option value="NE" data-select2-id="select2-data-76-jvby">Nebraska</option>
+                              <option value="NM" data-select2-id="select2-data-77-llta">New Mexico</option>
+                              <option value="ND" data-select2-id="select2-data-78-figz">North Dakota</option>
+                              <option value="UT" data-select2-id="select2-data-79-8lfz">Utah</option>
+                              <option value="WY" data-select2-id="select2-data-80-bcrt">Wyoming</option>
+                            </optgroup>
+                            <optgroup label="Central Time Zone" data-select2-id="select2-data-81-jen7">
+                              <option value="AL" data-select2-id="select2-data-82-5jij">Alabama</option>
+                              <option value="AR" data-select2-id="select2-data-83-n66x">Arkansas</option>
+                              <option value="IL" data-select2-id="select2-data-84-0mgz">Illinois</option>
+                              <option value="IA" data-select2-id="select2-data-85-7s58">Iowa</option>
+                              <option value="KS" data-select2-id="select2-data-86-pz32">Kansas</option>
+                              <option value="KY" data-select2-id="select2-data-87-je65">Kentucky</option>
+                              <option value="LA" data-select2-id="select2-data-88-cnrt">Louisiana</option>
+                              <option value="MN" data-select2-id="select2-data-89-7gmf">Minnesota</option>
+                              <option value="MS" data-select2-id="select2-data-90-hkye">Mississippi</option>
+                              <option value="MO" data-select2-id="select2-data-91-6fmw">Missouri</option>
+                              <option value="OK" data-select2-id="select2-data-92-7j22">Oklahoma</option>
+                              <option value="SD" data-select2-id="select2-data-93-k80t">South Dakota</option>
+                              <option value="TX" data-select2-id="select2-data-94-wtlv">Texas</option>
+                              <option value="TN" data-select2-id="select2-data-95-6fny">Tennessee</option>
+                              <option value="WI" data-select2-id="select2-data-96-j2jb">Wisconsin</option>
+                            </optgroup>
+                            <optgroup label="Eastern Time Zone" data-select2-id="select2-data-97-u9gk">
+                              <option value="CT" data-select2-id="select2-data-98-mpq6">Connecticut</option>
+                              <option value="DE" data-select2-id="select2-data-99-a113">Delaware</option>
+                              <option value="FL" data-select2-id="select2-data-100-qhot">Florida</option>
+                              <option value="GA" data-select2-id="select2-data-101-p4vy">Georgia</option>
+                              <option value="IN" data-select2-id="select2-data-102-3jqg">Indiana</option>
+                              <option value="ME" data-select2-id="select2-data-103-f92x">Maine</option>
+                              <option value="MD" data-select2-id="select2-data-104-cstj">Maryland</option>
+                              <option value="MA" data-select2-id="select2-data-105-1f5k">Massachusetts</option>
+                              <option value="MI" data-select2-id="select2-data-106-6qu4">Michigan</option>
+                              <option value="NH" data-select2-id="select2-data-107-cxn9">New Hampshire</option>
+                              <option value="NJ" data-select2-id="select2-data-108-9hv8">New Jersey</option>
+                              <option value="NY" data-select2-id="select2-data-109-y3gt">New York</option>
+                              <option value="NC" data-select2-id="select2-data-110-th4o">North Carolina</option>
+                              <option value="OH" data-select2-id="select2-data-111-qvzx">Ohio</option>
+                              <option value="PA" data-select2-id="select2-data-112-mc9v">Pennsylvania</option>
+                              <option value="RI" data-select2-id="select2-data-113-hn6t">Rhode Island</option>
+                              <option value="SC" data-select2-id="select2-data-114-yrgn">South Carolina</option>
+                              <option value="VT" data-select2-id="select2-data-115-gzpu">Vermont</option>
+                              <option value="VA" data-select2-id="select2-data-116-geu3">Virginia</option>
+                              <option value="WV" data-select2-id="select2-data-117-ocwr">West Virginia</option>
+                            </optgroup>

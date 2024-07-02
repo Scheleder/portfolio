@@ -1,0 +1,103 @@
+10.127.16.1:1433
+
+cetus_homologacao
+password=sTU!YsWmJkj2Sfwv9GR#hwRh9h
+maxxi_admin
+password=sGQE21haJTBMxxb9fLufgW8m!A
+cetus_producao
+password=4nb#mB3sLm#EwbLRuhbvAY?rL9#gv!x#M
+
+
+	
+ALTER TABLE Colaborador  
+ADD TipoComissao int 
+NOT NULL
+CONSTRAINT DF_Colaborador_TipoComissao
+DEFAULT 1;
+
+ALTER TABLE Colaborador  
+ADD PercentualComissao decimal(15,2) 
+CONSTRAINT DF_Colaborador_PercentualComissao
+NOT NULL
+DEFAULT 1;
+
+ALTER TABLE ColaboradorComissao  
+ADD VendaID bigint 
+constraint FK_ColaboradorComissao_VendaID 
+foreign key (VendaID) 
+references Venda(VendaID);
+
+ALTER TABLE OrcamentoServico  
+ADD ValorComissao decimal(15,2) 
+NOT NULL
+CONSTRAINT DF_OrcamentoServico_ValorComissao
+DEFAULT 0;
+
+ALTER TABLE OrcamentoServico  
+ADD PercentualComissao decimal(15,2) 
+NOT NULL
+CONSTRAINT DF_OrcamentoServico_PercentualComissao
+DEFAULT 0;
+
+ALTER TABLE ParametroServico  
+ADD ValorComissao decimal(15,2) 
+NOT NULL
+CONSTRAINT DF_ParametroServico_ValorComissao
+DEFAULT 0;
+
+ALTER TABLE ParametroServico  
+ADD PercentualComissao decimal(15,2) 
+NOT NULL
+CONSTRAINT DF_ParametroServico_PercentualComissao
+DEFAULT 0;
+
+CREATE TABLE ComissaoVariavel (
+    ComissaoVariavelID int IDENTITY(1,1) NOT NULL CONSTRAINT PK_ComissaoVariavel_ComissaoVariavelID PRIMARY KEY (ComissaoVariavelID),
+    EmpresaID bigint NOT NULL CONSTRAINT FK_ComissaoVariavel_EmpresaID FOREIGN KEY (EmpresaID) REFERENCES Empresa(EmpresaID),
+    Inicial decimal(15,4) NOT NULL CONSTRAINT DF_ComissaoVariavel_Inicial DEFAULT 0,
+   	Final decimal(15,4) NOT NULL CONSTRAINT DF_ComissaoVariavel_Final DEFAULT 0,
+   	Valor decimal(15,4) NOT NULL CONSTRAINT DF_ComissaoVariavel_Valor DEFAULT 0,
+    CreatedBy INT NOT NULL CONSTRAINT FK_ComissaoVariavel_CreatedBy FOREIGN KEY (CreatedBy) REFERENCES Colaborador(ColaboradorID),
+    CreatedOn DATETIME NOT NULL CONSTRAINT DF_ComissaoVariavel_CreatedOn DEFAULT GETDATE(),
+    UpdatedBy INT NOT NULL CONSTRAINT FK_ComissaoVariavel_UpdatedBy FOREIGN KEY (UpdatedBy) REFERENCES Colaborador(ColaboradorID),
+    UpdatedOn DATETIME NOT NULL CONSTRAINT DF_ComissaoVariavel_UpdatedOn DEFAULT GETDATE()
+);
+
+ALTER TABLE Orcamento  
+ADD ValorComissao decimal(15,2) 
+NOT NULL
+CONSTRAINT DF_Orcamento_ValorComissao
+DEFAULT 0;
+
+ALTER TABLE Venda  
+ADD ValorComissao decimal(15,2) 
+NOT NULL
+CONSTRAINT DF_Venda_ValorComissao
+DEFAULT 0;
+
+ALTER TABLE Colaborador 
+ALTER COLUMN PercentualComissao decimal(15,4) 
+NOT NULL;
+
+ALTER TABLE OrcamentoServico 
+ALTER COLUMN PercentualComissao decimal(15,4) 
+NOT NULL;
+
+ALTER TABLE 
+OrcamentoItem ALTER COLUMN PercentualComissao decimal(18,4) 
+NOT NULL;
+
+ALTER TABLE ParametroServico 
+ALTER COLUMN PercentualComissao decimal(15,4) 
+NOT NULL;
+
+ALTER TABLE Produto 
+ALTER COLUMN ComissaoPercentual decimal(18,4) 
+NOT NULL;
+
+ALTER TABLE VendaServico  
+ADD ValorComissao decimal(15,2) 
+NOT NULL
+CONSTRAINT DF_Venda_ValorComissao
+DEFAULT 0;
+

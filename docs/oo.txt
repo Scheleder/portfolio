@@ -58,3 +58,28 @@ Pode possuir construtor;
 
 SOBRECARGA DE MÉTODOS
 Mesmo nome de método com argumentos diferentes;
+
+SOLID
+Single Responsability Principle (Princípio da Responsabilidade Única);
+Classes e metodos responsaveis por executar uma unica função
+
+Open/Closed Principle (Princípio do “Aberto para Extensão/Fechado para Implementação);
+O princípio de aberto/fechado diz que as classes devem estar abertas para extensão, mas fechadas para modificação.
+
+Liskov Substitution Principle (Princípio da Substituição de Liskov);
+subclasses devem ser substituíveis por suas classes de base.
+se a classe B for uma subclasse da classe A, 
+devemos poder passar um objeto da classe B para qualquer método que espere um objeto da classe A 
+e o método não deverá produzir resultados estranhos
+
+Interface Segregation Principle (Princípio da Segregação de Interfaces);
+Segregação quer dizer manter as coisas separadas. 
+O princípio da segregação da interface tem a ver com separar as interfaces.
+O princípio declara que muitas interfaces específicas do cliente são melhores que uma interface de propósito geral. 
+Os clientes não devem ser forçados a implementar uma função que não necessitam.
+
+Dependency Inversion Principle (Princípio da Inversão de Dependências)
+O princípio da inversão da dependência declara que nossas classes devem depender de interfaces 
+ou de classes abstratas em vez de classes concretas e de funções.
+"Se o princípio de aberto/fechado declara o objetivo da arquitetura orientada a objetos, 
+o princípio de inversão da dependência declara seu mecanismo principal".

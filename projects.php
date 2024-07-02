@@ -62,12 +62,15 @@
                 <div id="container-fluid">
                     <h1>Projetos e Realização Profissional</h1> 
                     
+                    <h4><ion-icon size="normal" name="create"></ion-icon> APLICAÇÃO ERP - CETUS SOLUTION</h4>
+                    <h5>Sistema de gestão empresarial, atuação em diversos módulos, principlamente em produção e qualidade.</h5>
+
                     <h4><ion-icon size="normal" name="create"></ion-icon> APLICAÇÃO WEB - GERENCIADOR DE AGENDAMENTOS</h4>
                     <h5>Aplicação desenvolvida em LARAVEL, com acesso via web, responsável pela gestão de cursos, matriculas, 
                         relatórios e agendamentos de pacientes nas aulas de pós graduação e residência clínica do Instituto BRA de 
                         Capacitação e Treinamento, em Curitiba.</h5>
 
-                    <h4><ion-icon size="normal" name="code-working"></ion-icon> WEBSERVICE - GERENCIADOR DE BACKUPS PARA AUTOMAÇÃO INDUSTRIAL</h4>
+                    <h4><ion-icon size="normal" name="code-working"></ion-icon> APLICAÇÃO WEB - GERENCIADOR DE BACKUPS PARA AUTOMAÇÃO INDUSTRIAL</h4>
                     <h5>Aplicação desenvolvida em PHP, HTML, JS e CSS, funciona via ethernet, para armazenamento e 
                         gerenciamento de backups dos firmwares, projetos e arquivos de configuração dos equipamentos 
                         de automação industrial (CLPs, Drivers, PCs, Inversores, etc.) utilizados na planta da 

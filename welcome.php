@@ -58,10 +58,10 @@
                     <h4>
                     Tenho boa vivência com normas técnicas e de qualidade, melhoria de processos, 
                     negociação com clientes e fornecedores,
-                    desenvolvimento de aplicações, websites, equipamentos e projetos eletrônicos.
+                    desenvolvimento de aplicações, websites e sistemas de automação industrial.
                     </p>
-                    Desenvolvo aplicações em Java, JavaSript, PHP, C, C#, Asssembly, Delphi, HTML, CSS...,
-                    frameworks como Laravel, Spring, ASP.NET, Node, React e Bootstrap, 
+                    Desenvolvo aplicações em  algumas linguagens de programação principalmente em JavaSript, PHP, C# e Java.
+                    Cnheço frameworks como .Net, Laravel, Node, NodeJS, React, Spring Boot, diversas bibliotecas e 
                     banco de dados SQL, Postgres, MongoDB e MariaDB, plataforma Github e 
                     desenvolvimento web e nas plataformas Windows, Linux e Android para aplicações mobile e desktop.                    
                     </h4> 

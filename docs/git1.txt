@@ -1,6 +1,11 @@
 ######### criando um novo repositório
-crie uma nova pasta, abra-a e execute o comando
+crie uma nova pasta, abra-a e execute os comandos:
 git init
+git add .
+git commit -m "First Commit"
+git branch -M main
+git remote add origin https://github.com/Scheleder/example.git
+git push -u origin main
 
 ######### obtenha um repositório
 git clone /caminho/para/o/repositório
@@ -39,7 +44,7 @@ git push origin nome_da_branch
 ######### atualizar & mesclar
 git pull
 
-######### mesclar branch
+######### mesclar
 git merge nome_da_branch
 
 ######### visualizar alterações

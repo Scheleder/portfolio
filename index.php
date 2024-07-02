@@ -56,8 +56,7 @@
                 <div id="container-fluid">
                 <h1>Bem vindo ao meu Portfolio Profissional!</h1>
                 <h4>Meu nome é <spam style="color:#A11">João Scheleder Neto</spam>, 
-                atuo na área de Análise de Sistemas como Programador, Desenvolvedor,
-                    Analista, Técnico em Eletrônica ou Projetista Eletrônico.</h4>
+                atuo na área de Análise de Sistemas como Desenvolvedor Full-stack e como Técnico de Automação Industrial.</h4>
                 <h4>Acesse o menu ao lado para saber mais.</h4>
                 <h4>Ou então, faça o download do meu cartão virtual:</h4>  
                 <a href="docs/scheleder.pdf" class="nav-link">
