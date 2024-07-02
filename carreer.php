@@ -65,7 +65,7 @@
                     Manutenção de sistemas de automação industrial.
                     </h5>
 
-                    <h4> <img src="img/raletc.png" alt="logo">RALTEC BRASIL (fev/2023)</h4>
+                    <h4> <img src="img/raltec.png" alt="logo">RALTEC BRASIL (fev/2023)</h4>
                     <h5><ion-icon name="id-card-outline"></ion-icon>
                     Desenvolvedor full-stack.
                     </h5>
