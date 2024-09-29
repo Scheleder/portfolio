@@ -64,8 +64,8 @@
                     <h1>Projetos e Realização Profissional</h1> 
 
                     <h4><ion-icon size="normal" name="code-working"></ion-icon> APLICAÇÃO WEB - CONTROLE DE ESTOQUE</h4>
-                    <h5>Sistema completo de gestão de estoque, com possibilidade de cadastro de vários armazens e com integração com inteligênica artificial. 
-                        Composto por uma API em nodejs com documentação em SWAGGER e um front-end em REACTJS.</h5>
+                    <h5>Sistema completo de gestão de estoque, com possibilidade de cadastro de vários armazens e integração com inteligênica artificial. 
+                        Composto por uma API em NODEJS com documentação em SWAGGER e um front-end em REACTJS.</h5>
 
                     <h4><ion-icon size="normal" name="sparkles"></ion-icon> APLICAÇÃO ERP - CETUS SOLUTION</h4>
                     <h5>Sistema de gestão empresarial, atuação em diversos módulos, principlamente em produção e qualidade.</h5>
