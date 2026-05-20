@@ -1,3 +1,5 @@
+
+
 LARAVEL FRAMEWORK
 
 DOCUMENTAÇÃO => https://laravel.com
@@ -32,6 +34,9 @@ php artisan breeze:install //instala o breeze e o vite com opções
 
 #baixa as dependências JS
 npm install
+composer install 
+ou 
+composer/update
 
 #gera os arquivos CSS e JS otimizados
 # TailwindCSS
@@ -343,10 +348,69 @@ e roda: php artisan migrate
 
 ######### POPULAR TABELAS
 php artisan make:seeder UserSeeder
+
 php artisan tinker
 User::factory()->count(200)->create()
 
-######### PUBLICAR PROVIDERS E TAGS
+OU
+
+php artisan make:seeder ProfessionsTableSeeder
+
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class ProfessionsTableSeeder extends Seeder
+{
+    public function run(): void
+    {
+        $professions = [
+            'Doctor',
+            'Nurse',
+            'Engineer',
+            'Teacher',
+            'Lawyer',
+            'Accountant',
+            'Architect',
+            'Electrician',
+            'Mechanic',
+            'Software Developer',
+            'Web Designer',
+            'Pharmacist',
+            'Psychologist',
+            'Dentist',
+            'Veterinarian',
+            'Plumber',
+            'Chef',
+            'Police Officer',
+            'Firefighter',
+            'Journalist',
+        ];
+
+        foreach ($professions as $profession) {
+            DB::table('professions')->updateOrInsert(
+                ['name' => $profession],
+                ['created_at' => now(), 'updated_at' => now()]
+            );
+        }
+    }
+}
+
+database/seeders/DatabaseSeeder.php
+
+public function run(): void
+{
+    $this->call([
+        ProfessionsTableSeeder::class,
+    ]);
+}
+
+php artisan db:seed
+
+######### PUBLICAR PROVIDERS E TAGSphp
  php artisan vendor:publish
 
 ######### ROTAS
@@ -387,6 +451,12 @@ php artisan route:cache
 php artisan route:clear
 php artisan cache:clear
 php artisan view:clear
+
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
+php artisan cache:clear
+
 
 +++++ VER LISTA DE ROTAS
 php artisan route:list

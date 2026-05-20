@@ -1,146 +1,35 @@
-*{
-    font-family: 'Roboto';
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-body{
-    background-size:cover;
-    background-repeat: no-repeat;
-    padding-bottom: 80px;
-    min-height: 100vh;
-    position: relative;
-}
-
-footer{
-    color: #AAA;
-    text-align: center;
-    padding: 10px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 80px;
-}
-
-main{
-  max-height:fit-content;
-}
-
-footer a{
-    color: #AAA;
-    text-decoration: none;
-}
-  
-footer :hover{
-    color: rgb(150, 0, 0);
-}
-
-h1{
-  font-size: 22px;
-  font-weight: bold;
-  
-}
-
-h2{
-  font-size: 22px;
-   font-weight: normal;
-}
-
-h3{
-  font-size: 20px;
-  font-style: normal;
-}
-
-h4{
-  font-size: 18px;
-  font-style: normal;
-  margin-top: 30px;
-}
-
-h5{
-  font-size: 18px;
-  font-style: italic;
-  margin-left: 70px;
-}
-
-h4 img{
-  width: 30px;
-  margin-right: 10px;
-}
-
-#foto img{
-  width:100px;
- 
-}
-
-
-  /*NAVBAR*/
-
-#navbar{
-    justify-content: space-between;
-    margin-right: 30px;
-    margin-top: 5px;
+@layer utilities {
+  .animate-fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
   }
-
-#navbar img{
-    width: 100px;
-    margin-left: 10px;
-    margin-right: 50px;
-  }
-
-#container-fluid img{
-margin-left: 10px;
-margin-right: 10px;
-  }
-
-#container-fluid a,
-#navbar a{
-    font-size: 20px;
-    font-weight: bold;
-    color: #AAA;
-    text-decoration: none;
-  }
-
-#container-fluid a:hover{
-  color:rgb(150, 0, 0);
-  
 }
 
-#navbar a:hover{
-    color:rgb(150, 0, 0);
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-
-
-  #navbar .active a{
-    color:rgb(150, 0, 0);
-    text-decoration: none;
-    font-weight: bold;
-    
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-.navbar-toggler {
-  border-color: rgb(150, 0, 0);
-  accent-color: rgb(150, 0, 0);
-  
 }
 
-.navbar-toggler-icon {
-  background-image: url(
-"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(150, 0, 0, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+/* Custom scrollbar para visual mais moderno */
+::-webkit-scrollbar {
+  width: 8px;
 }
-
-#container-fluid{
-  padding-top:  20px;
-  padding-left: 50px;
-  padding-right: 50px;
-  color: #AAA;
+::-webkit-scrollbar-track {
+  background: transparent;
 }
-
-.nav-link{
-  padding-left: 5px;
+::-webkit-scrollbar-thumb {
+  background: #a0aec0;
+  border-radius: 4px;
 }
-
-.nav-link ion-icon{
-  vertical-align: text-bottom;
-  padding-top: 5px;
-  margin-right: 1px;
-  font-size: 26px;
+.dark ::-webkit-scrollbar-thumb {
+  background: #4a5568;
 }
