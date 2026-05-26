@@ -181,3 +181,5 @@ exports.delete = async(req,res)=>{
   return res.json(aluno)}
 
 
+SENHA ESTOQUE
+bLbysM5*m8?
