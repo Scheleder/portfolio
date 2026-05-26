@@ -1,6 +1,6 @@
 <?php
 
-define('WEBHOOK_TARGET_URL', 'http://18.230.115.161/postback');
+define('WEBHOOK_TARGET_URL', 'http://18.230.115.161/api/postback');
 
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS');
