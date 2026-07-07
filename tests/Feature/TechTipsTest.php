@@ -248,4 +248,75 @@ class TechTipsTest extends TestCase
             return $mail->user->id === $targetUser->id && $mail->hasTo('target@example.com');
         });
     }
+
+    public function test_private_cards_visibility_logic(): void
+    {
+        $owner = User::create([
+            'name' => 'Owner User',
+            'email' => 'owner@example.com',
+            'password' => bcrypt('password'),
+            'is_admin' => false,
+            'is_blocked' => false,
+        ]);
+
+        $otherUser = User::create([
+            'name' => 'Other User',
+            'email' => 'other@example.com',
+            'password' => bcrypt('password'),
+            'is_admin' => false,
+            'is_blocked' => false,
+        ]);
+
+        $category = Category::create(['name' => 'General Category', 'slug' => 'general-category']);
+        $subcategory = Subcategory::create(['name' => 'General Subcategory', 'slug' => 'general-subcategory', 'category_id' => $category->id]);
+
+        $publicTip = Tip::create([
+            'user_id' => $owner->id,
+            'subcategory_id' => $subcategory->id,
+            'title' => 'Public Tip Title',
+            'slug' => 'public-tip-title',
+            'content' => 'Content',
+            'type' => 'dica',
+            'is_public' => true,
+        ]);
+
+        $privateTip = Tip::create([
+            'user_id' => $owner->id,
+            'subcategory_id' => $subcategory->id,
+            'title' => 'Private Tip Title',
+            'slug' => 'private-tip-title',
+            'content' => 'Content',
+            'type' => 'dica',
+            'is_public' => false,
+        ]);
+
+        // 1. Guest access to detail pages
+        $this->get('/tip/public-tip-title')->assertStatus(200);
+        $this->get('/tip/private-tip-title')->assertStatus(404);
+
+        // 2. Guest listing check
+        $response = $this->get(route('techtips.index'));
+        $response->assertSee('Public Tip Title');
+        $response->assertDontSee('Private Tip Title');
+
+        // 3. Owner access to detail pages
+        $this->actingAs($owner);
+        $this->get('/tip/public-tip-title')->assertStatus(200);
+        $this->get('/tip/private-tip-title')->assertStatus(200);
+
+        // 4. Owner listing check
+        $response = $this->get(route('techtips.index'));
+        $response->assertSee('Public Tip Title');
+        $response->assertSee('Private Tip Title');
+
+        // 5. Other user access to detail pages
+        $this->actingAs($otherUser);
+        $this->get('/tip/public-tip-title')->assertStatus(200);
+        $this->get('/tip/private-tip-title')->assertStatus(404);
+
+        // 6. Other user listing check
+        $response = $this->get(route('techtips.index'));
+        $response->assertSee('Public Tip Title');
+        $response->assertDontSee('Private Tip Title');
+    }
 }

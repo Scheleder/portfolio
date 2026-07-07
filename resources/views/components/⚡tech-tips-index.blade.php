@@ -63,7 +63,12 @@ new class extends Component
             ->when($this->type, function ($query) {
                 $query->where('type', $this->type);
             })
-            ->where('is_public', true)
+            ->where(function ($query) {
+                $query->where('is_public', true);
+                if (auth()->check()) {
+                    $query->orWhere('user_id', auth()->id());
+                }
+            })
             ->with(['subcategory.category', 'images'])
             ->orderBy($this->sort === 'views' ? 'view_count' : 'created_at', 'desc')
             ->paginate(6);

@@ -13,7 +13,12 @@ class TipDetailController
     public function show($slug)
     {
         $tip = Tip::where('slug', $slug)
-            ->where('is_public', true)
+            ->where(function ($query) {
+                $query->where('is_public', true);
+                if (auth()->check()) {
+                    $query->orWhere('user_id', auth()->id());
+                }
+            })
             ->with(['subcategory.category', 'images'])
             ->firstOrFail();
 
@@ -26,7 +31,12 @@ class TipDetailController
     public function share(Request $request, $slug)
     {
         $tip = Tip::where('slug', $slug)
-            ->where('is_public', true)
+            ->where(function ($query) {
+                $query->where('is_public', true);
+                if (auth()->check()) {
+                    $query->orWhere('user_id', auth()->id());
+                }
+            })
             ->firstOrFail();
 
         $request->validate([
