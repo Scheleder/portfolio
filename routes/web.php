@@ -44,6 +44,13 @@ Route::any('/logout', function () {
     return redirect('/');
 })->name('logout');
 
+Route::get('/admin/toggle-layout', function () {
+    $current = session('filament_navigation_layout', 'sidebar');
+    $new = $current === 'top' ? 'sidebar' : 'top';
+    session(['filament_navigation_layout' => $new]);
+    return back();
+})->name('filament.toggle-layout')->middleware(['web', 'auth']);
+
 Route::get('/admin/logout', fn () => redirect()->route('logout'));
 
 Route::match(['get', 'post'], '/approve-user/{user}', [UserApprovalController::class, 'handle'])->name('user.approve.show');

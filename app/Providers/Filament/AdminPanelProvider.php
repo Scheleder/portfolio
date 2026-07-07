@@ -51,6 +51,13 @@ class AdminPanelProvider extends PanelProvider
             ->widgets([
                 //
             ])
+            ->topNavigation(fn () => session('filament_navigation_layout') === 'top')
+            ->userMenuItems([
+                \Filament\Navigation\MenuItem::make()
+                    ->label(fn () => session('filament_navigation_layout') === 'top' ? 'Menu Lateral' : 'Menu Superior')
+                    ->icon('heroicon-o-arrows-right-left')
+                    ->url(fn () => route('filament.toggle-layout')),
+            ])
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
