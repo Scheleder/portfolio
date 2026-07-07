@@ -71,7 +71,7 @@ class CustomRegister extends BaseRegister
         return $this->getUserModel()::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'password' => $data['password'],
             'avatar' => $data['avatar'] ?? null,
             'bio' => $data['bio'] ?? null,
             'is_admin' => false,
