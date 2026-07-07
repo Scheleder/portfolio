@@ -66,4 +66,9 @@ class User extends Authenticatable implements HasAvatar, FilamentUser
             'is_blocked' => 'boolean',
         ];
     }
+
+    public function tips(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Tip::class);
+    }
 }
