@@ -46,14 +46,4 @@ Route::any('/logout', function () {
 
 Route::get('/admin/logout', fn () => redirect()->route('logout'));
 
-Route::get('/storage/{path}', function (string $path) {
-    $filePath = storage_path('app/public/' . $path);
-
-    if (! file_exists($filePath)) {
-        abort(404);
-    }
-
-    return response()->file($filePath);
-})->where('path', '.*');
-
 Route::match(['get', 'post'], '/approve-user/{user}', [UserApprovalController::class, 'handle'])->name('user.approve.show');
