@@ -37,3 +37,9 @@ Este documento contém o contexto arquitetural e as regras de implementação pa
 - Mantenha a indentação coerente e feche apropriadamente todas as tags HTML.
 - Evite misturar muita lógica PHP pesada no topo das views se isso for implementado futuramente; caso aconteça, abstraia lógicas em arquivos auxiliares e os inclua (`require_once`).
 - Nomenclatura de arquivos e pastas adota padrão de caixa baixa em inglês (`education.php`, `projects.php`).
+
+---
+
+## 🚀 Regras de Deploy e Git
+
+- **Não commitar ou fazer push diretamente na branch `master`**: A Hostinger está configurada com deploy automático (via webhooks/auto-update) ao detectar alterações na branch `master`. Para evitar deploys prematuros de códigos em desenvolvimento, qualquer commit ou push deve ser feito em branches de desenvolvimento ou deixados para aprovação/ação manual do desenvolvedor.
