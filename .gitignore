@@ -22,5 +22,7 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
-/public/docs
+!/public/docs/
+/public/docs/*
+!/public/docs/scheleder.pdf
 /_portfolio_backup
