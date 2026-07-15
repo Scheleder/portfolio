@@ -14,6 +14,9 @@ class TipDetailController
     {
         $tip = Tip::where('slug', $slug)
             ->where(function ($query) {
+                if (auth()->check() && auth()->user()->is_admin) {
+                    return;
+                }
                 $query->where('is_public', true);
                 if (auth()->check()) {
                     $query->orWhere('user_id', auth()->id());
@@ -32,6 +35,9 @@ class TipDetailController
     {
         $tip = Tip::where('slug', $slug)
             ->where(function ($query) {
+                if (auth()->check() && auth()->user()->is_admin) {
+                    return;
+                }
                 $query->where('is_public', true);
                 if (auth()->check()) {
                     $query->orWhere('user_id', auth()->id());

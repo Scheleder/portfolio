@@ -318,5 +318,22 @@ class TechTipsTest extends TestCase
         $response = $this->get(route('techtips.index'));
         $response->assertSee('Public Tip Title');
         $response->assertDontSee('Private Tip Title');
+
+        // 7. Admin user access to detail pages (should see other user's private tip)
+        $admin = User::create([
+            'name' => 'Admin User',
+            'email' => 'admin-view-test@example.com',
+            'password' => bcrypt('password'),
+            'is_admin' => true,
+            'is_blocked' => false,
+        ]);
+        $this->actingAs($admin);
+        $this->get('/tip/public-tip-title')->assertStatus(200);
+        $this->get('/tip/private-tip-title')->assertStatus(200);
+
+        // 8. Admin user listing check (should see other user's private tip)
+        $response = $this->get(route('techtips.index'));
+        $response->assertSee('Public Tip Title');
+        $response->assertSee('Private Tip Title');
     }
 }

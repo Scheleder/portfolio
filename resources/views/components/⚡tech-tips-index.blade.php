@@ -64,6 +64,9 @@ new class extends Component
                 $query->where('type', $this->type);
             })
             ->where(function ($query) {
+                if (auth()->check() && auth()->user()->is_admin) {
+                    return;
+                }
                 $query->where('is_public', true);
                 if (auth()->check()) {
                     $query->orWhere('user_id', auth()->id());
