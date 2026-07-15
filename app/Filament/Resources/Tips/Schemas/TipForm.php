@@ -25,7 +25,7 @@ class TipForm
                     ->options(Category::all()->pluck('name', 'id'))
                     ->live()
                     ->dehydrated(false)
-                    ->default(fn ($record) => $record?->subcategory?->category_id)
+                    ->afterStateHydrated(fn (Select $component, $record) => $component->state($record?->subcategory?->category_id))
                     ->required(),
 
                 Select::make('subcategory_id')
