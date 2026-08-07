@@ -35,7 +35,7 @@ Route::get('/techtips', function () {
 })->name('techtips.index');
 
 Route::get('/tip/{slug}', [TipDetailController::class, 'show'])->name('tip.show');
-Route::post('/tip/{slug}/share', [TipDetailController::class, 'share'])->name('tip.share');
+Route::post('/tip/{slug}/share', [TipDetailController::class, 'share'])->name('tip.share')->middleware('auth');
 
 Route::any('/logout', function () {
     auth()->logout();

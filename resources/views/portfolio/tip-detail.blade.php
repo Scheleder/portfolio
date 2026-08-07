@@ -10,7 +10,7 @@
             <ion-icon name="arrow-back-outline"></ion-icon>
             Voltar para TechTips
         </a>
-        
+
         <div class="text-xs font-mono text-gray-500 dark:text-gray-400">
             TechTips &gt; {{ $tip->subcategory->category->name }} &gt; {{ $tip->subcategory->name }}
         </div>
@@ -84,13 +84,13 @@
             <ion-icon name="images-outline" class="text-primary-dark dark:text-primary-light"></ion-icon>
             Galeria de Imagens
         </h2>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             @foreach ($tip->images as $img)
             <div class="group bg-white dark:bg-gray-800/50 p-3 rounded-2xl shadow border dark:border-gray-700/50 flex flex-col justify-between overflow-hidden">
                 <div class="relative overflow-hidden rounded-xl h-48 bg-gray-100 dark:bg-gray-900">
-                    <img src="{{ asset('storage/' . $img->image_path) }}" alt="{{ $img->caption }}" 
-                    class="object-cover w-full h-full cursor-pointer transition-transform duration-300 group-hover:scale-105" 
+                    <img src="{{ asset('storage/' . $img->image_path) }}" alt="{{ $img->caption }}"
+                    class="object-cover w-full h-full cursor-pointer transition-transform duration-300 group-hover:scale-105"
                     onclick="window.showPdfModal('{{ asset('storage/' . $img->image_path) }}', '{{ $img->caption ?? 'Imagem' }}')">
                 </div>
                 @if ($img->caption)
@@ -102,6 +102,7 @@
     </div>
     @endif
 
+    @auth
     <!-- Seção de Compartilhamento -->
     <div class="bg-white/60 dark:bg-gray-850/60 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/20 dark:border-gray-800/60 flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="space-y-1 text-center md:text-left">
@@ -111,7 +112,7 @@
 
         <form action="{{ route('tip.share', $tip->slug) }}" method="POST" class="w-full md:w-auto flex flex-col sm:flex-row gap-3">
             @csrf
-            <input type="email" name="email" required placeholder="destinatario@exemplo.com" 
+            <input type="email" name="email" required placeholder="destinatario@exemplo.com"
             class="px-4 py-2.5 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-650 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary-dark dark:focus:ring-primary-light text-gray-800 dark:text-gray-150 w-full sm:w-64">
             <button type="submit" class="py-2.5 px-6 bg-primary-dark dark:bg-primary-light text-white dark:text-gray-900 font-bold text-sm rounded-xl hover:opacity-90 transition shadow-md flex items-center justify-center gap-2 shrink-0">
                 <ion-icon name="send-outline"></ion-icon>
@@ -119,6 +120,7 @@
             </button>
         </form>
     </div>
+    @endauth
 </div>
 
 <style>
