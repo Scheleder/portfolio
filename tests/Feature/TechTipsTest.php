@@ -48,7 +48,7 @@ class TechTipsTest extends TestCase
         $response = $this->get(route('portfolio.index'));
 
         $response->assertStatus(200);
-        $response->assertSee('Boas-vindas');
+        $response->assertSee('Desenvolvimento sob medida');
     }
 
     public function test_techtips_index_page_returns_ok(): void

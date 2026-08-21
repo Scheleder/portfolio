@@ -27,7 +27,9 @@
 
 @section('content')
 <div class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl shadow-xl p-8 md:p-12 transition-all duration-300 mb-10">
-    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-10 border-b-2 border-primary-dark dark:border-primary-light pb-4 inline-block">Projetos e Realização Profissional</h1> 
+    <p class="text-sm font-semibold uppercase tracking-widest text-primary-dark dark:text-primary-light mb-3">Portfólio de soluções</p>
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Soluções e projetos desenvolvidos</h1>
+    <p class="mt-4 mb-10 max-w-3xl text-lg leading-relaxed text-gray-600 dark:text-gray-400">Uma seleção de sistemas, aplicações e melhorias criados a partir de desafios operacionais, de negócio e de tecnologia.</p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach ($projects as $proj)

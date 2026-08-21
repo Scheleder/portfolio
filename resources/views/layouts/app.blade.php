@@ -19,7 +19,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -29,7 +29,8 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Roboto', 'sans-serif'],
+                        sans: ['IBM Plex Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
                     },
                     colors: {
                         primary: {
@@ -55,7 +56,7 @@
     @livewireStyles
     @stack('styles')
 </head>
-<body class="bg-primary-light dark:bg-primary-dark text-gray-800 dark:text-gray-200 transition-colors duration-500 min-h-screen relative pb-20 bg-[url('{{ asset('img/wall.jpg') }}')] bg-cover bg-no-repeat bg-fixed bg-blend-normal dark:bg-blend-multiply">
+<body class="bg-[#f7f5f7] dark:bg-[#18030a] text-gray-800 dark:text-gray-200 transition-colors duration-500 min-h-screen flex flex-col bg-[radial-gradient(circle_at_top_right,_rgba(136,0,0,0.10),_transparent_30%)] dark:bg-[radial-gradient(circle_at_top_right,_rgba(230,230,250,0.12),_transparent_28%)]">
     
     <header class="sticky top-0 z-50">
         <!-- Glassmorphism Navbar -->
@@ -63,11 +64,20 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
                 <div class="flex justify-between h-20 items-center">
                     
-                    <!-- Left: Profile Image -->
-                    <div class="flex-shrink-0 flex items-center w-24">
-                        <img src="{{ asset('img/' . ($headerImg ?? 'perfil.png')) }}" alt="foto"
-                            class="absolute top-1 left-20 h-24 w-24 rounded-full border-2 backdrop-blur-md border-white/70 dark:border-gray-900/80 shadow-lg z-50 transition-transform duration-300 hover:scale-105 bg-white dark:bg-gray-800 object-cover">
-                    </div>
+                    <!-- Marca -->
+                    <a href="{{ route('portfolio.index') }}" class="flex shrink-0 items-center gap-3 rounded-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary-dark/30 dark:focus-visible:ring-primary-light/30">
+                        @if ($headerIsLogo ?? false)
+                            <img src="{{ asset('img/' . $headerImg) }}" alt="Scheleder"
+                                class="h-11 w-auto max-w-32 object-contain transition-transform duration-300 hover:scale-105">
+                        @else
+                            <img src="{{ asset('img/' . ($headerImg ?? 'perfil.png')) }}" alt="João Scheleder Neto"
+                                class="h-12 w-12 rounded-full border-2 border-white dark:border-gray-800 shadow-md transition-transform duration-300 hover:scale-105 bg-white dark:bg-gray-800 object-cover">
+                        @endif
+                        <div class="hidden sm:block leading-tight">
+                            <span class="block text-base font-bold tracking-[0.18em] text-gray-900 dark:text-white">SCHELEDER</span>
+                            <span class="block text-xs text-gray-500 dark:text-gray-400">Soluções em tecnologia</span>
+                        </div>
+                    </a>
                     
                     <!-- Right: Navigation & Logo -->
                     <div class="flex items-center gap-4 md:gap-8">
@@ -75,11 +85,11 @@
                         <div class="hidden md:flex items-center space-x-6">
                             @php
                                 $links = [
-                                    'portfolio.index' => 'Home',
-                                    'portfolio.profile' => 'Perfil',
+                                    'portfolio.index' => 'Início',
+                                    'portfolio.profile' => 'Sobre',
                                     'portfolio.education' => 'Formação',
                                     'portfolio.career' => 'Experiência',
-                                    'portfolio.projects' => 'Projetos',
+                                    'portfolio.projects' => 'Soluções',
                                     'portfolio.contact' => 'Contato',
                                     'techtips.index' => 'TechTips',
                                 ];
@@ -111,12 +121,6 @@
                             </button>
                         </div>
                         
-                        <!-- Logo Right -->
-                        <div class="flex-shrink-0 flex items-center">
-                            <a href="{{ route('portfolio.index') }}" class="transition-transform duration-300 hover:scale-105 block">
-                                <img src="{{ asset('img/logo.png') }}" alt="SCHELEDER" class="h-12 w-auto">
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -135,7 +139,7 @@
         </nav>
     </header>
     
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 animate-fade-in-up">
+    <main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 animate-fade-in-up">
         @yield('content')
     </main>
 
@@ -144,7 +148,7 @@
         <div class="bg-white dark:bg-gray-800 w-full max-w-2xl rounded-2xl shadow-2xl p-6 md:p-8 transform scale-95 transition-transform duration-300 overflow-y-auto max-h-[90vh] border border-gray-100 dark:border-gray-700">
             <div class="flex justify-between items-start mb-6">
                 <h3 id="modalTitle" class="text-2xl font-bold text-gray-900 dark:text-white pr-4 leading-tight"></h3>
-                <button id="closeModalBtn" onclick="window.closeModal()" class="text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-full p-1 flex items-center justify-center">
+            <button id="closeModalBtn" aria-label="Fechar modal" onclick="window.closeModal()" class="text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-full p-2 flex items-center justify-center">
                     <ion-icon name="close" class="text-2xl"></ion-icon>
                 </button>
             </div>
@@ -154,7 +158,7 @@
         </div>
     </div>
 
-    <footer class="absolute bottom-0 w-full h-16 flex items-center justify-center text-gray-600 dark:text-gray-400 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm border-t border-gray-200 dark:border-gray-800 transition-colors duration-500">
+    <footer class="w-full min-h-16 py-4 flex items-center justify-center text-gray-600 dark:text-gray-400 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm border-t border-gray-200 dark:border-gray-800 transition-colors duration-500">
         <a href="{{ route('portfolio.contact') }}" class="hover:text-primary-dark dark:hover:text-primary-light transition-colors duration-300">
             <p class="font-medium text-sm">João Scheleder Neto &copy; {{ date('Y') }}</p>
         </a>

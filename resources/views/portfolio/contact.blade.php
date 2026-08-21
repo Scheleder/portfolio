@@ -18,7 +18,9 @@
 @section('content')
 <div class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl shadow-xl p-8 md:p-12 transition-all duration-300 mb-10 max-w-4xl mx-auto">
     <div class="text-center mb-10">
-        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white border-b-2 border-primary-dark dark:border-primary-light pb-4 inline-block">Contato</h1> 
+        <p class="text-sm font-semibold uppercase tracking-widest text-primary-dark dark:text-primary-light mb-3">Vamos conversar</p>
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Tem um processo que pode ser mais simples?</h1>
+        <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-400 leading-relaxed">Conte um pouco sobre o desafio. Podemos avaliar juntos uma solução web, integração ou automação para a sua operação.</p>
     </div>
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
